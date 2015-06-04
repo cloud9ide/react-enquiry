@@ -48,6 +48,9 @@ define(function(require, exports, module) {
         componentWillReceiveProps: function(nextProps) {
             var nextState = {};
 
+            if ('value' in nextProps)
+                nextState.value = nextProps.value;
+
             if (nextProps.errors && nextProps.errors[this.props.field])
                 nextState.error = nextProps.errors[this.props.field];
 

@@ -16,8 +16,8 @@ define(function(require, exports, module) {
 
         renderInputElement: function() {
             if (this.props.rows || this.props.multiLine)
-                return <textarea disabled={this.props.disabled} placeholder={this.props.placeholder} rows={this.props.rows || 3} className={this.classNames(this.props.className)} type={this.props.type} defaultValue={this.state.value} onChange={this.onChange} />;
-            return <input disabled={this.props.disabled} placeholder={this.props.placeholder} className={this.classNames(this.props.className)} type={this.props.type} defaultValue={this.state.value} onChange={this.onChange} />;
+                return <textarea disabled={this.props.disabled} placeholder={this.props.placeholder} rows={this.props.rows || 3} className={this.classNames(this.props.className)} type={this.props.type} value={this.state.value} onChange={this.onChange} />;
+            return <input disabled={this.props.disabled} placeholder={this.props.placeholder} className={this.classNames(this.props.className)} type={this.props.type} value={this.state.value} onChange={this.onChange} />;
         },
 
         renderLabel: function() {
@@ -34,6 +34,6 @@ define(function(require, exports, module) {
                 );
         }
     });
-    
+
     module.exports = Input;
 });
