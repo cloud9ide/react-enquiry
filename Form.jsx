@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+
     "use strict";
 
     var React = require('react'),
@@ -148,4 +148,3 @@ define(function(require, exports, module) {
     });
 
     module.exports = Form;
-});

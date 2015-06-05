@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+
     var React = require('react'),
         cx = require('classnames');
 
@@ -124,4 +124,3 @@ define(function(require, exports, module) {
             return <span class="error">{this.state.error}</span>;
         }
     };
-});

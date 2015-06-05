@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+
     var React = require('react'),
         FormField = require('./mixin/Field.jsx');
 
@@ -36,4 +36,3 @@ define(function(require, exports, module) {
     });
 
     module.exports = Input;
-});
