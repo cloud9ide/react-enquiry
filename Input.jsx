@@ -28,10 +28,10 @@ var Input = React.createClass({
     render: function() {
         return (
             <div className={this.props.wrapperClassName}>
-                    {this.renderLabel()}
-                    {this.renderInputElement()} {this.renderError()}
-                  </div>
-            );
+                {this.renderLabel()}
+                {this.renderInputElement()} {this.renderError()}
+            </div>
+        );
     }
 });
 
