@@ -18,6 +18,7 @@ module.exports = {
         errors: React.PropTypes.object,
         type: React.PropTypes.string,
         value: React.PropTypes.any,
+        initialValue: React.PropTypes.any,
         format: React.PropTypes.func,
     },
 
@@ -30,7 +31,7 @@ module.exports = {
 
     getInitialState: function() {
         return {
-            value: this.props.value,
+            value: this.props.initialValue || this.props.value,
             error: this.props.errors[this.props.field]
         };
     },
