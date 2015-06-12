@@ -14,10 +14,22 @@ var Input = React.createClass({
         FormField
     ],
 
+
     renderInputElement: function() {
+        var attrs = {
+            autoFocus: this.props.autoFocus,
+            disabled: this.props.disabled,
+            placeHolder: this.props.placeholder,
+            className: this.classNames(this.props.className),
+            type: this.props.type,
+            value: this.state.value,
+            onChange: this.onChange,
+        };
+
         if (this.props.rows || this.props.multiLine)
-            return <textarea disabled={this.props.disabled} placeholder={this.props.placeholder} rows={this.props.rows || 3} className={this.classNames(this.props.className)} type={this.props.type} value={this.state.value} onChange={this.onChange} />;
-        return <input disabled={this.props.disabled} placeholder={this.props.placeholder} className={this.classNames(this.props.className)} type={this.props.type} value={this.state.value} onChange={this.onChange} />;
+            return <textarea rows={this.props.rows || 3} {...attrs} />;
+
+        return <input  {...attrs}/>;
     },
 
     renderLabel: function() {
@@ -31,7 +43,7 @@ var Input = React.createClass({
                 {this.renderLabel()}
                 {this.renderInputElement()} {this.renderError()}
             </div>
-        );
+            );
     }
 });
 
