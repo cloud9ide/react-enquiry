@@ -19,7 +19,7 @@ var Input = React.createClass({
         var attrs = {
             autoFocus: this.props.autoFocus,
             disabled: this.props.disabled,
-            placeHolder: this.props.placeholder,
+            placeholder: this.props.placeholder,
             className: this.classNames(this.props.className),
             type: this.props.type,
             value: this.state.value,
