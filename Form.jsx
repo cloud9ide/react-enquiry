@@ -9,6 +9,8 @@ function traverseChildren(children, ref, passProps) {
         return children;
 
     return React.Children.map(children, function(child, idx) {
+        if (!child) return null;
+        
         var props = clone(passProps || {});
         props.ref = [ref, idx].join('_');
 
