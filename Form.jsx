@@ -75,6 +75,24 @@ var Form = React.createClass({
         }, {});
     },
 
+    clearErrors: function() {
+        var fields = this.getFields();
+
+        for (var key in fields) {
+            fields[key].clearError();
+        }
+    },
+
+    hasValues: function() {
+        var values = this.getValues();
+
+        for (var key in values) {
+            if (values[key] === undefined) return false;
+        }
+
+        return true;
+    },
+
     _setErrors: function(errors) {
         var fields = this.getFields();
 
