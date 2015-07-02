@@ -32,9 +32,16 @@ var Input = React.createClass({
         return <input  {...attrs}/>;
     },
 
+    renderOptional: function() {
+        if (this.props.optional)
+            return <small className="lighten">&nbsp; (optional)</small>
+    },
+
     renderLabel: function() {
-        if (this.props.label)
-            return <label>{this.props.label}</label>;
+        if (!this.props.label)
+            return;
+
+        return <label>{this.props.label}{this.renderOptional()}</label>;
     },
 
     render: function() {
