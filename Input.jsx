@@ -25,6 +25,7 @@ var Input = React.createClass({
             name: this.props.name || this.props.key,
             value: this.state.value,
             onChange: this.onChange,
+            initialValue: this.props.initialValue,
         };
 
         if (this.props.rows || this.props.multiLine)
