@@ -142,7 +142,10 @@ var Form = React.createClass({
 
     onSubmit: function(evt) {
         evt.preventDefault();
-
+        this.submit();
+    },
+    
+    submit: function(evt) {
         this.validate(function(errors, values) {
             if (!this.props.onSubmit) return;
             this.props.onSubmit(errors, values, this);
