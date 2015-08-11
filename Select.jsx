@@ -1,6 +1,7 @@
 
-var React = require('react'),
-    FormField = require('./mixin/Field.jsx');
+var React = require('react');
+var FormField = require('./mixin/Field.jsx');
+var Select = require("react-select");
 
 /**
  * Simple select input type.
@@ -12,8 +13,16 @@ var Input = React.createClass({
         FormField
     ],
 
+    onSelectChange: function(value) {
+        this.onChange({
+            target: {
+                value: value
+            }
+        });
+    },
+
     renderInputElement: function() {
-        return <select disabled={this.props.disabled} className={this.classNames(this.props.className)} onChange={this.onChange}>{this.props.children}</select>;
+        return <Select disabled={this.props.disabled} className={this.classNames(this.props.className)} onChange={this.onSelectChange} {...this.props} />;
     },
 
     renderLabel: function() {
