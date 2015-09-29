@@ -122,6 +122,6 @@ module.exports = {
 
     renderError: function() {
         if (!this.state.error) return <span />;
-        return <small className="text-danger">{this.state.error}</small>;
+        return <small className="text-color-danger">{this.state.error}</small>;
     }
 };
