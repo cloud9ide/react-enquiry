@@ -1,28 +1,41 @@
+"use strict";
 
 var React = require('react');
 var FormField = require('./mixin/Field.jsx');
-var Select = require("react-select");
 
 /**
  * Simple select input type.
  */
-var Input = React.createClass({
+var Select = React.createClass({
     displayName: 'Select',
 
     mixins: [
         FormField
     ],
 
-    onSelectChange: function(value) {
-        this.onChange({
-            target: {
-                value: value
-            }
+    renderOptions: function(){
+        return this.props.options.map(function(val){
+            return <option key={val.value} value={val.value}>{val.label}</option>;
         });
     },
 
-    renderInputElement: function() {
-        return <Select disabled={this.props.disabled} className={this.classNames(this.props.className)} onChange={this.onSelectChange} {...this.props} />;
+    renderSelect: function() {
+        var props = {
+            field: this.props.field,
+            id: this.props.id,
+            name: this.props.id,
+            disabled: this.props.disabled,
+            onChange: this.onChange,
+            className: this.props.className,
+        };
+        
+        return (
+            <div className="select-caret">
+                <select {...props}>
+                    {this.renderOptions()}
+                </select>
+            </div>
+        );
     },
 
     renderLabel: function() {
@@ -31,13 +44,15 @@ var Input = React.createClass({
     },
 
     render: function() {
+            // <div className={this.props.wrapperClassName}>
         return (
-            <div className={this.props.wrapperClassName}>
+            <div>
                 {this.renderLabel()}
-                {this.renderInputElement()} {this.renderError()}
+                {this.renderSelect()} 
+                {this.renderError()}
             </div>
         );
     }
 });
 
-module.exports = Input;
+module.exports = Select;
