@@ -96,8 +96,23 @@ module.exports = {
             error: this.isValid()
         });
     },
+    
+    isTentativelyValid: function(){
+        var error = this._runAllValidations([], this.getValue());
+        return !error;
+    },
 
     validate: function(values, value) {
+        var error = this._runAllValidations(values, value);
+
+        this.setState({
+            error: error
+        });
+
+        return error;
+    },
+    
+    _runAllValidations: function(values, value){
         var validation = this.props.validation, error;
 
         if (arguments.length == 0) {
@@ -113,11 +128,7 @@ module.exports = {
             if (!error) return true;
             return false;
         });
-
-        this.setState({
-            error: error
-        });
-
+        
         return error;
     },
 

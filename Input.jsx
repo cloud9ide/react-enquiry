@@ -31,12 +31,20 @@ var Input = React.createClass({
         if (this.props.rows || this.props.multiLine)
             return <textarea rows={this.props.rows || 3} {...attrs} />;
 
-        return <input  {...attrs}/>;
+        if (this.props.icon) {
+            return (
+                <span className={"icon icon-wrap-right icon-" + this.props.icon}>
+                    <input  {...attrs}/>
+                </span>
+            );
+        }
+
+        return <input {...attrs} />;
     },
 
     renderOptional: function() {
         if (this.props.optional)
-            return <small className="lighten">&nbsp; (optional)</small>
+            return <small className="lighten">&nbsp; (optional)</small>;
     },
 
     renderLabel: function() {
@@ -52,7 +60,7 @@ var Input = React.createClass({
                 {this.renderLabel()}
                 {this.renderInputElement()} {this.renderError()}
             </div>
-            );
+        );
     }
 });
 

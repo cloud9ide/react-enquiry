@@ -9,12 +9,22 @@ var FieldSet = React.createClass({
     propTypes: {
         disabled: React.PropTypes.bool,
     },
+    
+    getInitialState: function(){
+        return { mounted: false };  
+    },
+    
+    componentDidMount: function(){
+        this.setState({ mounted: true });
+    },
 
     render: function() {
-        if (this.props.disabled)
-            return <fieldset disabled="disabled">{this.props.children}</fieldset>;
+        var attrs = {};
+        
+        if (this.props.disabled || !this.state.mounted )
+            attrs.disabled = "disabled";
 
-        return <fieldset>{this.props.children}</fieldset>;
+        return <fieldset {...attrs} className={this.props.className}>{this.props.children}</fieldset>;
     }
 });
 
