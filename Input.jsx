@@ -27,7 +27,7 @@ var Input = React.createClass({
             onChange: this.onChange,
             initialValue: this.props.initialValue,
         };
-
+        
         if (this.props.rows || this.props.multiLine)
             return <textarea rows={this.props.rows || 3} {...attrs} />;
 
