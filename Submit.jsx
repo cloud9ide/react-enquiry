@@ -29,7 +29,7 @@ module.exports = React.createClass({
     },
     
     render: function(){
-        var disabled = !!this.props.active;
+        var disabled = !this.props.active;
 
         return <button className={this.props.className} disabled={disabled} type="submit">{this.renderLabel()}</button>;
     }

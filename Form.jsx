@@ -1,4 +1,3 @@
-
 "use strict";
 
 var React = require('react'),
@@ -11,7 +10,7 @@ function traverseChildren(children, ref, passProps) {
     return React.Children.map(children, function(child, idx) {
         if (!child) return null;
         if (typeof child == "string") return child;
-        
+
         var props = clone(passProps || {});
         props.ref = [ref, idx].join('_');
 
@@ -141,16 +140,40 @@ var Form = React.createClass({
         return done(errors, values);
     },
 
+    isTentativelyValid: function() {
+        var fields = this.getFields();
+
+        return Object.keys(fields).reduce(function(validated, key) {
+            var field = fields[key];
+            validated[key] = field.isTentativelyValid();
+            return validated;
+        }, {});
+    },
+
     onSubmit: function(evt) {
         evt.preventDefault();
         this.submit();
     },
-    
+
     submit: function(evt) {
         this.validate(function(errors, values) {
             if (!this.props.onSubmit) return;
             this.props.onSubmit(errors, values, this);
         }.bind(this));
+    },
+
+    componentDidMount: function() {
+        if (!this.props.values) return;
+
+        var fields = this.getFields();
+        var values = this.props.values;
+
+        Object.keys(fields).forEach(function(key) {
+            var field = fields[key];
+            if (values[key])
+                field.setValue(values[key]);
+        });
+
     },
 
     /**
@@ -162,7 +185,8 @@ var Form = React.createClass({
 
     renderChildren: function() {
         return traverseChildren(this.props.children, 0, {
-            errors: this.getErrors()
+            values: this.props.values,
+            errors: this.getErrors(),
         });
     },
 

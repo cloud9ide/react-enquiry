@@ -16,6 +16,7 @@ module.exports = {
             React.PropTypes.func,
         ]),
         onChange: React.PropTypes.func,
+        notifyOnChange: React.PropTypes.func,
         errors: React.PropTypes.object,
         type: React.PropTypes.string,
         value: React.PropTypes.any,
@@ -39,9 +40,9 @@ module.exports = {
 
     onChange: function(evt) {
         this.setState({
-            error: null,
             value: evt.target.value
         }, function() {
+            this.validateTentatively();
             if (!this.props.onChange) return;
             this.props.onChange(this);
         }.bind(this));
@@ -93,13 +94,24 @@ module.exports = {
 
     classNames: function(classNames) {
         return cx(classNames, {
+            success: this.state.isTentativelyValid,
             error: this.isValid()
         });
     },
-    
+
     isTentativelyValid: function(){
         var error = this._runAllValidations();
         return !error;
+    },
+
+    
+    validateTentatively: function(){
+        var valid = this.isTentativelyValid();
+
+        this.setState({
+            error: !valid,
+            isTentativelyValid: valid,
+        });
     },
 
     validate: function(values, value) {
