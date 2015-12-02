@@ -98,7 +98,7 @@ module.exports = {
     },
     
     isTentativelyValid: function(){
-        var error = this._runAllValidations([], this.getValue());
+        var error = this._runAllValidations();
         return !error;
     },
 
@@ -112,15 +112,17 @@ module.exports = {
         return error;
     },
     
+    _getValidation: function(){
+        var validation = this.props.validation;
+        return Array.isArray(validation) ? validation : [validation];
+    },
+    
     _runAllValidations: function(values, value){
-        var validation = this.props.validation, error;
+        var validation = this._getValidation();
+        var error;
 
-        if (arguments.length == 0) {
-            value = this.state.value;
-            values = {};
-        }
-
-        validation = Array.isArray(validation) ? validation : [validation];
+        values = values || {};
+        value = value || this.getValue();
 
         validation.every(function(validation) {
             error = validation(values, value);
