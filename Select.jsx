@@ -27,6 +27,8 @@ var Select = React.createClass({
             disabled: this.props.disabled,
             onChange: this.onChange,
             className: this.props.className,
+            value: this.props.value,
+            initialValue: this.props.initialValue,
         };
         
         return (
