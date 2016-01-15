@@ -14,11 +14,11 @@ var Select = React.createClass({
     ],
 
     renderOptions: function(){
-        return this.props.options.map(function(val){
-            return <option key={val.value} value={val.value}>{val.label}</option>;
+        return this.props.options.map(function(val, n){
+            return <option key={val.value + "-" + n} value={val.value}>{val.label}</option>;
         });
     },
-
+    
     renderSelect: function() {
         var props = {
             field: this.props.field,
