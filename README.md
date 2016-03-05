@@ -1,4 +1,4 @@
-# reform
+# React reform
 
 ** beta version **
 
@@ -13,7 +13,7 @@ easy and intiuitive validation.
 ### Installation
 
 ```
-    npm install reform
+    npm install react-reform
 ```
 
 ### Usage
@@ -24,7 +24,7 @@ input fields. Reform does not render your form errors or anything else,
 but makes it trivial for you to create them yourself.
 
 ```jsx
-var Reform = require("reform/form");
+var Reform = require("react-reform/form");
 
 // form validation functions are plain functions
 // they should return an error or nothing if valid
@@ -103,7 +103,7 @@ var SignupForm = React.createClass({
 You will propably separate out some of the common stuff into components, such as
 an `Input` component that renders labels and errors.
 
-Nested components must be wrapped in either a `reform/fieldset` or `reform/field-wrapper`.
+Nested components must be wrapped in either a `react-reform/fieldset` or `react-reform/field-wrapper`.
 A field-wrapper renders it's `type` wich must be a valid HTML tagname, and will
 default to "div".
 
@@ -112,7 +112,7 @@ by wrapping class logic in a component:
 
 ```jsx
 
-var Wrapper = require("reform/field-wrapper");
+var Wrapper = require("react-reform/field-wrapper");
 var classNames = require("classnames");
 
 var Input = React.createClass({

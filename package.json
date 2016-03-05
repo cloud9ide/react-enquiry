@@ -1,5 +1,5 @@
 {
-  "name": "reform",
+  "name": "react-reform",
   "version": "0.0.1",
   "description": "A render-agnostic react form framework",
   "main": "reform.js",
