@@ -1,5 +1,9 @@
 # reform
 
+** beta version **
+
+<small style="color: red;">we're working on improving the docs and setting up more testing... use at your own risk!</small>
+
 Reform is a form validation framework for React that does not interfer with the
 way you want to structure your markup or render your components. 
 
@@ -142,6 +146,8 @@ var Input = React.createClass({
         );
     }
 });
+
+
 
 ```
 
