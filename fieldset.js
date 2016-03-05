@@ -1,31 +1,14 @@
-
 "use strict";
 
-var React = require("react");
+var React = require('react');
 
-var FieldSet = React.createClass({
-    displayName: "FieldSet",
+var transformChildren = require("./lib/transform-children");
 
-    propTypes: {
-        disabled: React.PropTypes.bool,
+var Fieldset = React.createClass({
+    render: function(){
+        return React.createElement("fieldset", this.props, transformChildren(this.props.children, 0));
     },
-    
-    getInitialState: function(){
-        return { mounted: false };  
-    },
-    
-    componentDidMount: function(){
-        this.setState({ mounted: true });
-    },
-
-    render: function() {
-        var attrs = {};
-        
-        if (this.props.disabled || !this.state.mounted )
-            attrs.disabled = "disabled";
-
-        return <fieldset {...attrs} className={this.props.className}>{this.props.children}</fieldset>;
-    }
 });
 
-module.exports = FieldSet;
+
+module.exports = Fieldset;
