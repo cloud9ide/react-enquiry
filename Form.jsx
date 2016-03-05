@@ -1,41 +1,9 @@
 "use strict";
 
-var React = require('react'),
-    clone = require('lodash').clone;
+var React = require('react');
 
-function traverseChildren(children, ref, passProps) {
-    if (typeof children !== 'object' || children === null)
-        return children;
-
-    return React.Children.map(children, function(child, idx) {
-        if (!child) return null;
-        if (typeof child == "string") return child;
-
-        var props = clone(passProps || {});
-        props.ref = [ref, idx].join('_');
-
-        return React.cloneElement(child, props, traverseChildren(child.props.children, props.ref, passProps));
-    });
-}
-
-/**
- * Recursively walk all child references to retrieve `field` elements.
- * 
- * @returns Object fields An object of key => value children.
- */
-function reduceRefs(refs, fields) {
-    return Object.keys(refs).reduce(function(fields, key) {
-        var child = refs[key];
-
-        if (child.props.field)
-            fields[child.props.field] = child;
-
-        if (child.refs)
-            return reduceRefs(child.refs, fields);
-
-        return fields;
-    }, fields || {});
-}
+var reduceRefs = require("./lib/reduce-refs");
+var traverseChildren = require("./lib/traverse-children");
 
 /**
  * The form component: manages form fields and can call validate on all of them.
