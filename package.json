@@ -1,5 +1,5 @@
 {
-  "name": "react-reform",
+  "name": "enquiry",
   "version": "0.0.1",
   "description": "A render-agnostic react form framework",
   "main": "reform.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cloud9ide/react-reform.git"
+    "url": "git+https://github.com/cloud9ide/react-enquiry.git"
   },
   "keywords": [
     "react",
@@ -21,9 +21,9 @@
   "author": "Matthijs van Henten <matthijs@c9.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cloud9ide/react-reform/issues"
+    "url": "https://github.com/cloud9ide/react-enquiry/issues"
   },
-  "homepage": "https://github.com/cloud9ide/react-reform#readme",
+  "homepage": "https://github.com/cloud9ide/react-enquiry#readme",
   "dependencies": {
     "lodash": "^4.6.1",
     "react": "^0.14.7",

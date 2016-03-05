@@ -1,30 +1,30 @@
-# React reform
+# React Enquiry
 
 ** beta version **
 
 _we're working on improving the docs and setting up more testing... use at your own risk!_
 
-Reform is a form validation framework for React that does not interfer with the
+Enquiry is a form validation framework for React that does not interfer with the
 way you want to structure your markup or render your components. 
 
-Reform recursively wraps your form components using a supercomponent to provide
+Enquiry recursively wraps your form components using a supercomponent to provide
 easy and intiuitive validation.
 
 ### Installation
 
 ```
-    npm install react-reform
+    npm install enquiry
 ```
 
 ### Usage
 
 Examples below are written in `jsx` and demonstrate how to perform validation
 and render components. Note that the form is composed of plain-old-divs and 
-input fields. Reform does not render your form errors or anything else, 
+input fields. Enquiry does not render your form errors or anything else, 
 but makes it trivial for you to create them yourself.
 
 ```jsx
-var Reform = require("react-reform/form");
+var Form = require("enquiry/form");
 
 // form validation functions are plain functions
 // they should return an error or nothing if valid
@@ -74,7 +74,7 @@ var SignupForm = React.createClass({
     
     render: function(){
         return (
-            <Reform onSubmit={this.onSubmit}>
+            <Form onSubmit={this.onSubmit}>
                 <div>
                     <label>E-mail</label>
                     <input type="email" validation={[isRequired, validateEmail]} name="email" placeholder="you@example.com" />
@@ -91,7 +91,7 @@ var SignupForm = React.createClass({
                     <div class="error">{this.state.errors.confirm}</div>
                 </div>
                 <button type="submit">Create account</button>
-            </Reform>
+            </Form>
         );
     }
 });
@@ -103,7 +103,7 @@ var SignupForm = React.createClass({
 You will propably separate out some of the common stuff into components, such as
 an `Input` component that renders labels and errors.
 
-Nested components must be wrapped in either a `react-reform/fieldset` or `react-reform/field-wrapper`.
+Nested components must be wrapped in either a `enquiry/fieldset` or `enquiry/field-wrapper`.
 A field-wrapper renders it's `type` wich must be a valid HTML tagname, and will
 default to "div".
 
@@ -112,7 +112,7 @@ by wrapping class logic in a component:
 
 ```jsx
 
-var Wrapper = require("react-reform/field-wrapper");
+var Wrapper = require("enquiry/field-wrapper");
 var classNames = require("classnames");
 
 var Input = React.createClass({
