@@ -1,100 +1,46 @@
 "use strict";
 
 var React = require('react');
+var clone = require("lodash/clone");
 
+var transformChildren = require("./lib/transform-children");
 var reduceRefs = require("./lib/reduce-refs");
-var traverseChildren = require("./lib/traverse-children");
 
-/**
- * The form component: manages form fields and can call validate on all of them.
- */
 var Form = React.createClass({
+    displayName: "Reform",
 
     propTypes: {
-        errors: React.PropTypes.object,
-        onValidate: React.PropTypes.func,
+        onSubmit: React.PropTypes.func,
+        values: React.PropTypes.object,
+        initialValues: React.PropTypes.object,
     },
 
-    getDefaultProps: function() {
-        return {
-            errors: {},
-        };
+    componentDidMount: function() {
+        this.setValues(this.props.defaultValues);
     },
 
-    componentWillReceiveProps: function(nextProps) {
-        if (nextProps.errors)
-            this._setErrors(nextProps.errors);
-    },
+    isTentativelyValid: function() {
+        var fields = reduceRefs(this.refs);
 
-    getInitialState: function() {
-        return {
-            errors: this.props.errors,
-        };
-    },
+        return Object.keys(fields).reduce(function(validated, key) {
+            var field = fields[key];
 
-    getFields: function() {
-        return reduceRefs(this.refs);
-    },
+            if (!field.isTentativelyValid)
+                return validated;
 
-    getValues: function() {
-        var fields = this.getFields();
-
-        return Object.keys(fields).reduce(function(values, key) {
-            values[key] = fields[key].getValue();
-            return values;
+            validated[key] = field.isTentativelyValid();
+            return validated;
         }, {});
     },
 
-    clearErrors: function() {
-        var fields = this.getFields();
-
-        for (var key in fields) {
-            fields[key].clearError();
-        }
-    },
-
-    hasValues: function() {
+    validate: function(done) {
+        var fields = reduceRefs(this.refs);
         var values = this.getValues();
 
-        for (var key in values) {
-            if (values[key] === undefined) return false;
-        }
-
-        return true;
-    },
-
-    _setErrors: function(errors) {
-        var fields = this.getFields();
-
-        Object.keys(errors).forEach(function(fieldName) {
-            if (!fields[fieldName]) return;
-
-            fields[fieldName].setError(errors[fieldName]);
-        });
-    },
-
-    getErrors: function() {
-        var key,
-            errs = {};
-
-        for (key in this.props.errors) {
-            errs[key] = this.props.errors[key];
-        }
-
-        for (key in this.state.errors) {
-            errs[key] = this.state.errors[key];
-        }
-
-        return errs;
-    },
-
-    validate: function(done) {
-        var fields = this.getFields(),
-            values = this.getValues();
-
         var errors = Object.keys(fields).reduce(function(errors, key) {
-            var child = fields[key];
-            var error = child.validate(values, child.state.value);
+            if (!fields[key].validate) return errors;
+
+            var error = fields[key].validate(values[key], values);
 
             if (error)
                 errors[key] = error;
@@ -108,13 +54,53 @@ var Form = React.createClass({
         return done(errors, values);
     },
 
-    isTentativelyValid: function() {
-        var fields = this.getFields();
+    setValues: function(values) {
+        if (typeof values !== 'object' || values === null)
+            return;
 
-        return Object.keys(fields).reduce(function(validated, key) {
+        var fields = reduceRefs(this.refs);
+
+        Object.keys(fields).forEach(function(key) {
+            if (!values[key])
+                return;
+
             var field = fields[key];
-            validated[key] = field.isTentativelyValid();
-            return validated;
+
+            if (Array.isArray(field)) {
+                field.forEach(function(child) {
+                    child.setValue(values[key]);
+                });
+            }
+            else {
+                field.setValue(values[key]);
+            }
+        });
+    },
+
+    getValues: function() {
+        var fields = reduceRefs(this.refs);
+
+        return Object.keys(fields).reduce(function(values, key) {
+            var field = fields[key];
+            var value;
+
+            if (Array.isArray(field)) {
+                value = field.reduce(function(values, field) {
+                    if (field.isRadio() && field.isChecked())
+                        return field.getValue();
+
+                    if (field.isChecbox() && field.isChecked())
+                        values.push(field.getValue());
+
+                    return values;
+                }, []);
+            }
+            else {
+                value = field.getValue();
+            }
+
+            values[key] = value;
+            return values;
         }, {});
     },
 
@@ -123,44 +109,20 @@ var Form = React.createClass({
         this.submit();
     },
 
-    submit: function(evt) {
+    submit: function() {
         this.validate(function(errors, values) {
             if (!this.props.onSubmit) return;
             this.props.onSubmit(errors, values, this);
         }.bind(this));
     },
 
-    componentDidMount: function() {
-        if (!this.props.values) return;
-
-        var fields = this.getFields();
-        var values = this.props.values;
-
-        Object.keys(fields).forEach(function(key) {
-            var field = fields[key];
-            if (values[key])
-                field.setValue(values[key]);
-        });
-
-    },
-
-    /**
-     * Inject references into the given chilren fo this component.
-     * e.g. in `render`, call `this.renderChildren()` instead of `this.props.children`
-     * 
-     * @returns Object fields An object of key => value children.
-     */
-
-    renderChildren: function() {
-        return traverseChildren(this.props.children, 0, {
-            values: this.props.values,
-            errors: this.getErrors(),
-        });
-    },
-
     render: function() {
-        return <form onSubmit={this.onSubmit}>{this.renderChildren()}</form>;
+        var props = clone(this.props);
+        props.onSubmit = this.onSubmit;
+
+        return React.createElement("form", props, transformChildren(this.props.children, 0));
     }
 });
+
 
 module.exports = Form;
