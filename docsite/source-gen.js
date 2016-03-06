@@ -9,19 +9,19 @@ var sources = [
         title: "Basic form example with validation",
         name: "basic",
         component: "./example/Basic.jsx",
-        source: "./app/example/Basic.jsx",
+        source: "./example/Basic.jsx",
     },
     {
         title: "Custom form elements",
         name: "custom",
         component: "./example/Custom.jsx",
-        source: "./app/example/Custom.jsx",
+        source: "./example/Custom.jsx",
     },
     {
         title: "The kitchen sink example",
         name: "sink",
         component: "./example/TheSink.jsx",
-        source: "./app/example/TheSink.jsx",
+        source: "./example/TheSink.jsx",
     },
 ];
 
@@ -42,13 +42,13 @@ async.reduce(sources, {}, function(out, value, next){
 }, function(err, data){
     if(err) throw err;
 
-    fs.writeFile("./app/example-sources.json", "module.exports = " + JSON.stringify(data, null, 4), function(err){
+    fs.writeFile("./example-sources.json", "module.exports = " + JSON.stringify(data, null, 4), function(err){
         if (err) throw err;
 
         var examples = sources.map(function(desc){
             return "module.exports." + desc.name + " = require(\"" + desc.component + "\");";
         });
         
-        fs.writeFile("./app/examples.js", examples.join("\n"));
+        fs.writeFile("./examples.js", examples.join("\n"));
     });
 });
