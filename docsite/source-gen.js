@@ -8,19 +8,16 @@ var sources = [
     {
         title: "Basic form example with validation",
         name: "basic",
-        component: "./example/Basic.jsx",
         source: "./example/Basic.jsx",
     },
     {
         title: "Custom form elements",
         name: "custom",
-        component: "./example/Custom.jsx",
         source: "./example/Custom.jsx",
     },
     {
         title: "The kitchen sink example",
         name: "sink",
-        component: "./example/TheSink.jsx",
         source: "./example/TheSink.jsx",
     },
 ];
