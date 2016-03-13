@@ -10,7 +10,13 @@ var paths = [
 
 module.exports = {
     entry: {
-        main: "./docsite/app.js",
+        main: "./site/app.js",
+    },
+    
+    resolve: {
+        alias: {
+          'react': path.join(__dirname, 'node_modules', 'react')
+        },        
     },
 
     output: {
