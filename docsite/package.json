@@ -24,7 +24,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./scripts/source-gen.js && webpack",
     "watch": "./scripts/source-gen.js && webpack --watch",
-    "serve": "serve -p 8080 dist",
+    "serve": "serve -p 8080 ../",
     "dev": "webpack-dev-server --host $IP --port $PORT --devtool eval --progress --colors --hot --content-base build",
     "start": "npm run dev"
   },

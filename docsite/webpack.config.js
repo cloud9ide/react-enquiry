@@ -21,7 +21,7 @@ module.exports = {
 
     output: {
         filename: "index.js",
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "../"),
         /* IMPORTANT!
          * You must compile to UMD or CommonJS
          * so it can be required in a Node context: */
