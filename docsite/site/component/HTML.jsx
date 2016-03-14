@@ -8,9 +8,9 @@ var HTML = React.createClass({
             <html>
                 <head>
                     <meta charset="UTF-8"/>
-                    <link href="https://cdn.c9.io/nc-3.1.1636-3f510945-wf/skin/profile.css" rel="stylesheet"/>
+                    <link href="./docsite/css/profile.css" rel="stylesheet"/>
                     <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css" rel="stylesheet"/>
-                    <link href="index.css" rel="stylesheet"/>
+                    <link href="./docsite/css/index.css" rel="stylesheet"/>
                     <title>{this.props.title}</title>
                 </head>
                 <body>
