@@ -2,6 +2,7 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var ReactDOMServer = require("react-dom/server");
 
 var HTML = require("./component/HTML.jsx");
 var Page = require("./component/Page.jsx");
@@ -13,7 +14,7 @@ if (typeof document !== 'undefined') {
 }
  
 module.exports = function render(locals, callback) {
-  var html = React.renderToStaticMarkup(React.createElement(HTML, locals));
+  var html = ReactDOMServer.renderToStaticMarkup(React.createElement(HTML, locals));
 
   callback(null, formatHtml("<!DOCTYPE html>\n" + html, {}));
 };
