@@ -1,6 +1,7 @@
 "use strict";
 
 var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var path = require("path");
 
@@ -12,11 +13,11 @@ module.exports = {
     entry: {
         main: "./site/app.js",
     },
-    
+
     resolve: {
         alias: {
-          'react': path.join(__dirname, 'node_modules', 'react')
-        },        
+            'react': path.join(__dirname, 'node_modules', 'react')
+        },
     },
 
     output: {
@@ -35,10 +36,18 @@ module.exports = {
             query: {
                 presets: ["es2015", "react"]
             }
+        }, {
+            test: /\.css$/,
+            loader: 'style!css'
         }]
     },
 
     plugins: [
-        new StaticSiteGeneratorPlugin('main', paths, {})
+        new StaticSiteGeneratorPlugin('main', paths, {}),
+        new CopyWebpackPlugin([{
+            from: {
+                glob: "css/*css"
+            }
+        }])
     ],
 };
