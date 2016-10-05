@@ -145,7 +145,7 @@ var TheSink = React.createClass({
             <div>
                 <Reform style={this.state.style} ref="fooform" defaultValues={this.state} onSubmit={this.onSubmit}>
                     <Input errors={this.state.errors} onChange={this.onChange} type="text" name="foo" />
-                    <textarea defaultValue="You can set a default value here too!" autoFocus={true} name="text" rows={3} placeholder="Tell me..." />
+                    <textarea defaultValue="You can set a default value here too!" name="text" rows={3} placeholder="Tell me..." />
                     <div>
                         <input type="radio" value="this" name="what" /> this
                         <input type="radio" value="that" name="what" /> that
