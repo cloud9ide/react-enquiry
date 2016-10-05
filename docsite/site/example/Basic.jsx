@@ -63,7 +63,10 @@ var SignupForm = React.createClass({
                 <div>
                     <label>Confirm password</label>
                     <input type="password" validation={[Validate.isRequired, Validate.validateEqual("password")]} name="confirm" placeholder="********" />
-                    <small className="text-color-danger">{this.state.errors.password}</small>
+                    <small className="text-color-danger">{this.state.errors.confirm}</small>
+                </div>
+                <div>
+                    <textarea name="remarks" />
                 </div>
                 <br/>
                 <button className="solid fat important" type="submit">Create account</button>

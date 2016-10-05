@@ -6,7 +6,7 @@
 
 var Validate = {
     isRequired: function(value, values){
-        if(value == undefined)
+        if(value == "")
             return "This field is required";
     },
     
@@ -16,7 +16,7 @@ var Validate = {
     },
     
     validatePassword: function(value){
-        if (!value.length > 8)
+        if (value.length < 8)
             return "Please use a password longer then 8 characters";
     },
     
