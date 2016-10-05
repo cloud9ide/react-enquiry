@@ -118,7 +118,11 @@ var Form = React.createClass({
 
     render: function() {
         var props = clone(this.props);
+
+        delete(props.defaultValues);
+
         props.onSubmit = this.onSubmit;
+        props.noValidate = true;
 
         return React.createElement("form", props, transformChildren(this.props.children, 0));
     }
