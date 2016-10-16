@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "for i in `git ls-files | grep _test.js`; do babel-node $i; done;",
-    "tidy": "git ls-files | grep -E \".jsx?$\" | xargs esformatter -i"
+    "tidy": "git ls-files | grep -E \".jsx?$\" | xargs esformatter -i",
+    "docs": "sh build-docs.sh"
   },
   "repository": {
     "type": "git",
