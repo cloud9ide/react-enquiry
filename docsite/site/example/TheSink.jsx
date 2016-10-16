@@ -5,8 +5,6 @@ var Fieldset = require("enquiry/fieldset");
 var Validate = require("./lib/validate");
 var _ = require("lodash");
 
-// var findField = require("./lib/util/find-field");
-
 var Input = React.createClass({
 
     generateId: function() {
@@ -19,7 +17,6 @@ var Input = React.createClass({
     },
 
     getError: function() {
-        console.log(this.props.errors);
         if (this.props.errors)
             return this.props.errors[this.props.name];
     },
@@ -47,8 +44,6 @@ var Input = React.createClass({
          */
         var passProps = _.omit(this.props, "required", "label");
 
-        console.log(this.validationFactory());
-
         return (
             <Fieldset ref="reform">
                 {this.renderLabel()}
@@ -56,13 +51,6 @@ var Input = React.createClass({
                 {this.renderFormError()}
             </Fieldset>
             );
-    // return (
-    //     <Fieldset>
-    //         {this.renderLabel()}
-    //         <input validation={Validate.isRequired} id={this.generateId()} {...passProps} />
-    //         {this.renderFormError()}
-    //     </Fieldset>
-    // );
     }
 });
 
