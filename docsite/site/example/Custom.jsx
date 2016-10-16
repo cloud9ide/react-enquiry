@@ -15,38 +15,38 @@ var Validate = require("./lib/validate");
 
 var Input = React.createClass({
 
-    generateId: function(){
+    generateId: function() {
         return "id-" + this.props.name;
     },
-    
-    renderLabel: function(){
-        if(this.props.label)
+
+    renderLabel: function() {
+        if (this.props.label)
             return <label htmlFor={this.generateId()}>{this.props.label}</label>;
     },
-    
-    getError: function(){
-        if(this.props.errors)
+
+    getError: function() {
+        if (this.props.errors)
             return this.props.errors[this.props.name];
     },
-    
-    renderFormError: function(){
-        if(this.getError())
+
+    renderFormError: function() {
+        if (this.getError())
             return <small className="text-color-danger">{this.getError()}</small>;
     },
-    
-    validationFactory: function(){
+
+    validationFactory: function() {
         var validation = [];
-        
+
         if (this.props.required)
             validation.push(Validate.isRequired);
-            
+
         if (this.props.type == "email")
             validation.push(Validate.validateEmail);
 
         return validation;
     },
 
-    render: function(){
+    render: function() {
         /**
          * Omit invalid html attributes and the required flag...
          */
@@ -66,17 +66,19 @@ var Input = React.createClass({
                 <input validation={this.validationFactory()} id={this.generateId()} {...passProps} />
                 {this.renderFormError()}
             </Fieldset>
-        );
+            );
     }
 });
 
 var CustomForm = React.createClass({
     displayName: "Form/With/Custom/Elements",
-    
-    getInitialState: function(){
-        return { errors: {} };
+
+    getInitialState: function() {
+        return {
+            errors: {}
+        };
     },
-    
+
     /**
      * Standard submit handler. 
      * 
@@ -86,19 +88,21 @@ var CustomForm = React.createClass({
      * @argument Object values - All form values as a key-value object
      * @argument Reform form   - The actual form component for advanced use
      */
-    onSubmit: function(errors, values, form){
+    onSubmit: function(errors, values, form) {
         /**
          * If any errors present, store them and bail out.
          */
-        if(errors) 
-            return this.setState({ errors: errors });
-            
-        /**
-         * Form is now validated, so better store values somewhere!
-         */
+        if (errors)
+            return this.setState({
+                errors: errors
+            });
+
+    /**
+     * Form is now validated, so better store values somewhere!
+     */
     },
-    
-    render: function(){
+
+    render: function() {
         /**
          * Wrap normal input tags in a enqury/form component.
          * 
@@ -114,7 +118,7 @@ var CustomForm = React.createClass({
                 <Input errors={this.state.errors} required={true} name="profession" label="Your profession..." />
                 <button className="solid">Save...</button>
             </Form>
-        );
+            );
     }
 });
 

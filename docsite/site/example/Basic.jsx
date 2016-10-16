@@ -13,11 +13,13 @@ var Validate = require("./lib/validate");
 
 var SignupForm = React.createClass({
     displayName: "Signup",
-    
-    getInitialState: function(){
-        return { errors: {} };
+
+    getInitialState: function() {
+        return {
+            errors: {}
+        };
     },
-    
+
     /**
      * Standard submit handler. 
      * 
@@ -27,19 +29,21 @@ var SignupForm = React.createClass({
      * @argument Object values - All form values as a key-value object
      * @argument Reform form   - The actual form component for advanced use
      */
-    onSubmit: function(errors, values, form){
+    onSubmit: function(errors, values, form) {
         /**
          * If any errors present, store them and bail out.
          */
-        if(errors) 
-            return this.setState({ errors: errors });
-            
-        /**
-         * Form is now validated, so better store values somewhere!
-         */
+        if (errors)
+            return this.setState({
+                errors: errors
+            });
+
+    /**
+     * Form is now validated, so better store values somewhere!
+     */
     },
-    
-    render: function(){
+
+    render: function() {
         /**
          * Wrap normal input tags in a enqury/form component.
          * 
@@ -63,12 +67,15 @@ var SignupForm = React.createClass({
                 <div>
                     <label>Confirm password</label>
                     <input type="password" validation={[Validate.isRequired, Validate.validateEqual("password")]} name="confirm" placeholder="********" />
-                    <small className="text-color-danger">{this.state.errors.password}</small>
+                    <small className="text-color-danger">{this.state.errors.confirm}</small>
+                </div>
+                <div>
+                    <textarea name="remarks" />
                 </div>
                 <br/>
                 <button className="solid fat important" type="submit">Create account</button>
             </Form>
-        );
+            );
     }
 });
 

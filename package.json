@@ -1,10 +1,12 @@
 {
   "name": "enquiry",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A render-agnostic react form framework",
-  "main": "reform.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "for i in `git ls-files | grep _test.js`; do babel-node $i; done;",
+    "tidy": "git ls-files | grep -E \".jsx?$\" | xargs esformatter -i",
+    "docs": "sh build-docs.sh"
   },
   "repository": {
     "type": "git",
@@ -25,8 +27,19 @@
   },
   "homepage": "https://github.com/cloud9ide/react-enquiry#readme",
   "dependencies": {
-    "lodash": "^4.6.1",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "lodash": "^4.6.1"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-node6": "^11.0.0",
+    "babel-preset-react": "^6.16.0",
+    "enzyme": "^2.4.1",
+    "esformatter": "^0.9.6",
+    "react": "^15.3.2",
+    "react-addons-test-utils": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "sinon": "^1.17.6"
   }
 }

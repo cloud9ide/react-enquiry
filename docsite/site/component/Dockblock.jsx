@@ -4,31 +4,31 @@ var React = require('react');
 var Highlight = require('react-highlight');
 
 var Dockblock = React.createClass({
-    
-    getInitialState: function(){
-        return {};  
+
+    getInitialState: function() {
+        return {};
     },
-    
-    toggleSource: function(evt){
+
+    toggleSource: function(evt) {
         evt.preventDefault();
 
         this.setState({
             source: !this.state.source
         });
     },
-    
-    renderSource: function(){
-        if(!this.state.source)
+
+    renderSource: function() {
+        if (!this.state.source)
             return;
-            
+
         return (
             <Highlight className="react">
                 {this.props.source}
             </Highlight>
-        );
+            );
     },
 
-    render: function(){
+    render: function() {
         return (
             <div id={"example-" + this.props.name}>
                 <h1>{this.props.title}</h1>
@@ -48,7 +48,7 @@ var Dockblock = React.createClass({
                 <hr className="margin-vertical-4" />
                 
             </div>
-        );
+            );
     }
 });
 
