@@ -4,7 +4,8 @@
   "description": "A render-agnostic react form framework",
   "main": "index.js",
   "scripts": {
-    "test": "for i in `git ls-files | grep _test.js`; do babel-node $i; done;"
+    "test": "for i in `git ls-files | grep _test.js`; do babel-node $i; done;",
+    "tidy": "git ls-files | grep -E \".jsx?$\" | xargs esformatter -i"
   },
   "repository": {
     "type": "git",
