@@ -9,81 +9,79 @@ var _ = require("lodash");
 
 var Input = React.createClass({
 
-    generateId: function(){
+    generateId: function() {
         return "id-" + this.props.name;
     },
-    
-    renderLabel: function(){
-        if(this.props.label)
+
+    renderLabel: function() {
+        if (this.props.label)
             return <label htmlFor={this.generateId()}>{this.props.label}</label>;
     },
-    
-    getError: function(){
+
+    getError: function() {
         console.log(this.props.errors);
-        if(this.props.errors)
+        if (this.props.errors)
             return this.props.errors[this.props.name];
     },
-    
-    renderFormError: function(){
-        if(this.getError())
+
+    renderFormError: function() {
+        if (this.getError())
             return <small className="text-color-danger">{this.getError()}</small>;
     },
-    
-    validationFactory: function(){
+
+    validationFactory: function() {
         var validation = [];
-        
+
         if (this.props.required)
             validation.push(Validate.isRequired);
 
         if (this.props.type == "email")
             validation.push(Validate.validateEmail);
-        
+
         return validation;
     },
 
-    render: function(){
+    render: function() {
         /**
          * Omit invalid html attributes and the required flag...
          */
         var passProps = _.omit(this.props, "required", "label");
-        
+
         console.log(this.validationFactory());
 
-       return (
+        return (
             <Fieldset ref="reform">
                 {this.renderLabel()}
                 <input validation={Validate.isRequired} id={this.generateId()} {...passProps} />
                 {this.renderFormError()}
             </Fieldset>
-        );
-        // return (
-        //     <Fieldset>
-        //         {this.renderLabel()}
-        //         <input validation={Validate.isRequired} id={this.generateId()} {...passProps} />
-        //         {this.renderFormError()}
-        //     </Fieldset>
-        // );
+            );
+    // return (
+    //     <Fieldset>
+    //         {this.renderLabel()}
+    //         <input validation={Validate.isRequired} id={this.generateId()} {...passProps} />
+    //         {this.renderFormError()}
+    //     </Fieldset>
+    // );
     }
 });
 
 var Deep = React.createClass({
-   render: function(){
-       return (
+    render: function() {
+        return (
             <Fieldset ref="reform" type="fieldset">
                 <p>I am a deeply nested component</p>
                 <label>How much?</label>
                 <input name="howmuch" type="number" />
             </Fieldset>
-        );
-   } 
+            );
+    }
 });
 
 var Prefs = React.createClass({
-    foo: function(){
-        
-    },
-    
-    render: function(){
+    foo: function() {},
+
+    render: function() {
         return (
             <Fieldset ref="reform" type="fieldset">
                 <label>
@@ -97,12 +95,12 @@ var Prefs = React.createClass({
                 </label>
                 <Deep />
             </Fieldset>
-        );
+            );
     }
 });
 
 var Things = React.createClass({
-    render: function(){
+    render: function() {
         return (
             <Fieldset ref="hookup" type="fieldset">
                 <select name="picone">
@@ -113,14 +111,14 @@ var Things = React.createClass({
                     <option value="e">Choose E</option>
                 </select>
             </Fieldset>
-        );
+            );
     }
 });
 
 
 var TheSink = React.createClass({
-    
-    getInitialState: function(){
+
+    getInitialState: function() {
         return {
             foo: "foo",
             what: "this",
@@ -128,19 +126,21 @@ var TheSink = React.createClass({
             picone: "c"
         };
     },
-    
-    onSubmit: function(errors, values, form){
+
+    onSubmit: function(errors, values, form) {
         this.setState({
-            style: { backgroundColor: "green" },
+            style: {
+                backgroundColor: "green"
+            },
             errorr: errors
         });
     },
-    
-    onChange: function(){
-        console.log(this.refs.fooform.isTentativelyValid());        
+
+    onChange: function() {
+        console.log(this.refs.fooform.isTentativelyValid());
     },
 
-    render: function(){
+    render: function() {
         return (
             <div>
                 <Reform style={this.state.style} ref="fooform" defaultValues={this.state} onSubmit={this.onSubmit}>
@@ -160,7 +160,7 @@ var TheSink = React.createClass({
                     <button>submit</button>
                 </Reform>
             </div>
-        );
+            );
     }
 });
 

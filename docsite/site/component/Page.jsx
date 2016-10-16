@@ -9,31 +9,31 @@ var Dockblock = require("./Dockblock.jsx");
 
 var Page = React.createClass({
     className: "Page",
-    
-    renderNav: function(){
-        return Object.keys(examples).map(function(name){
-            var src     = sources[name];
+
+    renderNav: function() {
+        return Object.keys(examples).map(function(name) {
+            var src = sources[name];
 
             return (
-                <a href={"#example-" + name} key={"nav-"+name}>{src.title}</a>
-            );
+                <a href={"#example-" + name} key={"nav-" + name}>{src.title}</a>
+                );
         });
     },
-    
-    renderDocs: function(){
-        return Object.keys(examples).map(function(name){
+
+    renderDocs: function() {
+        return Object.keys(examples).map(function(name) {
             var Example = examples[name];
-            var src     = sources[name];
+            var src = sources[name];
 
             return (
-                <Dockblock key={"key-"+name} {...src}>
+                <Dockblock key={"key-" + name} {...src}>
                     <Example />
                 </Dockblock>
-            );
+                );
         });
     },
-    
-    render: function(){
+
+    render: function() {
         return (
             <div id="doc-wrapper">
                 <div id="doc-sidebar">
@@ -45,7 +45,7 @@ var Page = React.createClass({
                     {this.renderDocs()}
                 </div>
             </div>
-        );
+            );
     }
 });
 

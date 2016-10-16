@@ -13,12 +13,12 @@ var Select = React.createClass({
         FormField
     ],
 
-    renderOptions: function(){
-        return this.props.options.map(function(val, n){
+    renderOptions: function() {
+        return this.props.options.map(function(val, n) {
             return <option key={val.value + "-" + n} value={val.value}>{val.label}</option>;
         });
     },
-    
+
     renderSelect: function() {
         var props = {
             field: this.props.field,
@@ -30,14 +30,14 @@ var Select = React.createClass({
             value: this.props.value,
             initialValue: this.props.initialValue,
         };
-        
+
         return (
             <div className="select-caret">
                 <select {...props}>
                     {this.renderOptions()}
                 </select>
             </div>
-        );
+            );
     },
 
     renderLabel: function() {
@@ -46,14 +46,14 @@ var Select = React.createClass({
     },
 
     render: function() {
-            // <div className={this.props.wrapperClassName}>
+        // <div className={this.props.wrapperClassName}>
         return (
             <div>
                 {this.renderLabel()}
                 {this.renderSelect()} 
                 {this.renderError()}
             </div>
-        );
+            );
     }
 });
 

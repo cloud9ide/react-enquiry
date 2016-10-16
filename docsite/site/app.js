@@ -12,9 +12,9 @@ var formatHtml = require('js-beautify').html;
 if (typeof document !== 'undefined') {
     ReactDOM.render(React.createElement(Page), document.getElementById('app'));
 }
- 
-module.exports = function render(locals, callback) {
-  var html = ReactDOMServer.renderToStaticMarkup(React.createElement(HTML, locals));
 
-  callback(null, formatHtml("<!DOCTYPE html>\n" + html, {}));
+module.exports = function render(locals, callback) {
+    var html = ReactDOMServer.renderToStaticMarkup(React.createElement(HTML, locals));
+
+    callback(null, formatHtml("<!DOCTYPE html>\n" + html, {}));
 };

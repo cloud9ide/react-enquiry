@@ -1,6 +1,6 @@
 "use strict";
 var React = require('react');
-var Page  = require("./Page.jsx");
+var Page = require("./Page.jsx");
 
 var HTML = React.createClass({
     render: function() {
@@ -20,7 +20,7 @@ var HTML = React.createClass({
                     <script src="./index.js"></script>
                 </body>
             </html>
-        );
+            );
     }
 });
 

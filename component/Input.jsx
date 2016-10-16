@@ -36,7 +36,7 @@ var Input = React.createClass({
                 <span className={"icon icon-wrap-right icon-" + this.props.icon}>
                     <input  {...attrs}/>
                 </span>
-            );
+                );
         }
 
         return <input {...attrs} />;
@@ -60,7 +60,7 @@ var Input = React.createClass({
                 {this.renderLabel()}
                 {this.renderInputElement()} {this.renderError()}
             </div>
-        );
+            );
     }
 });
 

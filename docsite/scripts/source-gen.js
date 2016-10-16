@@ -21,7 +21,7 @@ var sources = [{
     title: "The kitchen sink example",
     name: "sink",
     source: "/example/TheSink.jsx",
-}, ];
+},];
 
 
 async.reduce(sources, {}, function(out, value, next) {
@@ -38,10 +38,12 @@ async.reduce(sources, {}, function(out, value, next) {
         next(null, out);
     });
 }, function(err, data) {
-    if (err) throw err;
+    if (err)
+        throw err;
 
     fs.writeFile(BASE_PATH + "/example-sources.json", "module.exports = " + JSON.stringify(data, null, 4), function(err) {
-        if (err) throw err;
+        if (err)
+            throw err;
 
         var examples = sources.map(function(desc) {
             return "module.exports." + desc.name + " = require(\"." + desc.source + "\");";

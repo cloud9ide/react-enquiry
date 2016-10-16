@@ -70,8 +70,7 @@ var Form = React.createClass({
                 field.forEach(function(child) {
                     child.setValue(values[key]);
                 });
-            }
-            else {
+            } else {
                 field.setValue(values[key]);
             }
         });
@@ -94,8 +93,7 @@ var Form = React.createClass({
 
                     return values;
                 }, []);
-            }
-            else {
+            } else {
                 value = field.getValue();
             }
 
@@ -119,7 +117,7 @@ var Form = React.createClass({
     render: function() {
         var props = clone(this.props);
 
-        delete(props.defaultValues);
+        delete (props.defaultValues);
 
         props.onSubmit = this.onSubmit;
         props.noValidate = true;

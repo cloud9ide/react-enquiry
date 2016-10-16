@@ -1,8 +1,8 @@
 {
   "name": "enquiry",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A render-agnostic react form framework",
-  "main": "reform.js",
+  "main": "index.js",
   "scripts": {
     "test": "for i in `git ls-files | grep _test.js`; do babel-node $i; done;"
   },

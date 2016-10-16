@@ -5,11 +5,7 @@ require("./enzyme.env");
 const test = require("tape");
 const sinon = require("sinon");
 const React = require("react");
-const {
-    shallow,
-    mount,
-    render
-} = require("enzyme");
+const {shallow, mount, render} = require("enzyme");
 
 var Form = require("./form");
 
@@ -56,6 +52,6 @@ test("The form should run validations", assert => {
     assert.deepEqual(values, {
         test: "test-value"
     }, "found element");
-    
+
     assert.end();
 });
