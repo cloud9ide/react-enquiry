@@ -21,7 +21,11 @@ var Fieldset = React.createClass({
     render: function() {
         var props = clone(this.props);
 
+        delete (props.defaultValues);
         delete (props.type);
+
+        props.onSubmit = this.onSubmit;
+        props.noValidate = true;
 
         return React.createElement(this.props.type, props, transformChildren(this.props.children, 0));
     },
