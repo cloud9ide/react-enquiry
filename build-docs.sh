@@ -7,12 +7,13 @@ echo "Generating new website for ${GIT_BRANCH}"
 cd docsite
 npm install
 npm run build
+cd ..
 git clone . site-gen
 cd site-gen
 git checkout -t origin/gh-pages
 cp ../docsite/build/* . -r
-git add -A
+git add .
 git commit -m "regenerated site ${GIT_BRANCH}: ${GIT_COMMIT}..."
-# git push -u origin
-# cd ..
-# rm -rf site-gen
+git push -u origin
+cd ..
+rm -rf site-gen
