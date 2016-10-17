@@ -20,10 +20,10 @@
                     <h1>Basic form example with validation</h1>
                     <div class="row">
                         <div class="col-md-5">
-                            <form>
-                                <div><label>E-mail</label><input type="email" name="email" placeholder="you@example.com" /><small class="text-color-danger"></small></div>
-                                <div><label>Password</label><input type="password" name="password" placeholder="********" /><small class="text-color-danger"></small></div>
-                                <div><label>Confirm password</label><input type="password" name="confirm" placeholder="********" /><small class="text-color-danger"></small></div>
+                            <form novalidate="">
+                                <div><label>E-mail</label><input type="email" name="email" placeholder="you@example.com" value="" /><small class="text-color-danger"></small></div>
+                                <div><label>Password</label><input type="password" name="password" placeholder="********" value="" /><small class="text-color-danger"></small></div>
+                                <div><label>Confirm password</label><input type="password" name="confirm" placeholder="********" value="" /><small class="text-color-danger"></small></div>
                                 <div><textarea name="remarks"></textarea></div><br/><button class="solid fat important" type="submit">Create account</button></form>
                             <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
                         </div>
@@ -35,10 +35,10 @@
                     <h1>Custom form elements</h1>
                     <div class="row">
                         <div class="col-md-5">
-                            <form>
-                                <fieldset><label for="id-email">Your e-mail address</label><input type="email" id="id-email" name="email" /></fieldset>
-                                <fieldset><label for="id-name">Your name</label><input id="id-name" name="name" /></fieldset>
-                                <fieldset><label for="id-profession">Your profession...</label><input id="id-profession" name="profession" /></fieldset><button class="solid">Save...</button></form>
+                            <form novalidate="">
+                                <fieldset><label for="id-email">Your e-mail address</label><input type="email" id="id-email" name="email" value="" /></fieldset>
+                                <fieldset><label for="id-name">Your name</label><input id="id-name" name="name" value="" /></fieldset>
+                                <fieldset><label for="id-profession">Your profession...</label><input id="id-profession" name="profession" value="" /></fieldset><button class="solid">Save...</button></form>
                             <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
                         </div>
                         <div class="col-md-8 col-lg-10"></div>
@@ -50,13 +50,12 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div>
-                                <form>
-                                    <fieldset><input type="text" id="id-foo" name="foo" /></fieldset><textarea name="text" rows="3" placeholder="Tell me...">You can set a default value here too!</textarea>
-                                    <div><input type="radio" value="this" name="what" /> this<input type="radio" value="that" name="what" /> that</div>
-                                    <fieldset type="fieldset"><label><input type="checkbox" name="thing" value="1"/> I want one</label><label><input type="checkbox" name="thing" value="2"/> I want two</label><label><input type="checkbox" name="thing" value="3"/> I want three</label>
-                                        <fieldset
-                                            type="fieldset">
-                                            <p>I am a deeply nested component</p><label>How much?</label><input type="number" name="howmuch" /></fieldset>
+                                <form novalidate="">
+                                    <fieldset><input type="text" id="id-foo" name="foo" value="" /></fieldset><textarea name="text" rows="3" placeholder="Tell me...">You can set a default value here too!</textarea>
+                                    <div><input type="radio" name="what" /> this<input type="radio" name="what" /> that</div>
+                                    <fieldset type="fieldset"><label><input type="checkbox" name="thing"/> I want one</label><label><input type="checkbox" name="thing"/> I want two</label><label><input type="checkbox" name="thing"/> I want three</label>
+                                        <fieldset type="fieldset">
+                                            <p>I am a deeply nested component</p><label>How much?</label><input type="number" name="howmuch" value="" /></fieldset>
                                     </fieldset>
                                     <fieldset type="fieldset"><select name="picone"><option value="a">Choose A</option><option value="b">Choose B</option><option value="c">Choose C</option><option value="d">Choose D</option><option value="e">Choose E</option></select></fieldset>
                                     <select
