@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta/>
+    <link href="./css/profile.css" rel="stylesheet" />
+    <link href="./css/index.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css" rel="stylesheet" />
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <div id="doc-wrapper">
+            <div id="doc-sidebar">
+                <nav id="doc-nav" class="pills padding-top-6 margin-2"><a href="#example-basic">Basic form example with validation</a><a href="#example-custom">Custom form elements</a><a href="#example-sink">The kitchen sink example</a></nav>
+            </div>
+            <div id="doc-contents" class="padding-4">
+                <div id="example-basic">
+                    <h1>Basic form example with validation</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <form>
+                                <div><label>E-mail</label><input type="email" name="email" placeholder="you@example.com" /><small class="text-color-danger"></small></div>
+                                <div><label>Password</label><input type="password" name="password" placeholder="********" /><small class="text-color-danger"></small></div>
+                                <div><label>Confirm password</label><input type="password" name="confirm" placeholder="********" /><small class="text-color-danger"></small></div>
+                                <div><textarea name="remarks"></textarea></div><br/><button class="solid fat important" type="submit">Create account</button></form>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+                <div id="example-custom">
+                    <h1>Custom form elements</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <form>
+                                <fieldset><label for="id-email">Your e-mail address</label><input type="email" id="id-email" name="email" /></fieldset>
+                                <fieldset><label for="id-name">Your name</label><input id="id-name" name="name" /></fieldset>
+                                <fieldset><label for="id-profession">Your profession...</label><input id="id-profession" name="profession" /></fieldset><button class="solid">Save...</button></form>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+                <div id="example-sink">
+                    <h1>The kitchen sink example</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <form>
+                                    <fieldset><input type="text" id="id-foo" name="foo" /></fieldset><textarea name="text" rows="3" placeholder="Tell me...">You can set a default value here too!</textarea>
+                                    <div><input type="radio" value="this" name="what" /> this<input type="radio" value="that" name="what" /> that</div>
+                                    <fieldset type="fieldset"><label><input type="checkbox" name="thing" value="1"/> I want one</label><label><input type="checkbox" name="thing" value="2"/> I want two</label><label><input type="checkbox" name="thing" value="3"/> I want three</label>
+                                        <fieldset
+                                            type="fieldset">
+                                            <p>I am a deeply nested component</p><label>How much?</label><input type="number" name="howmuch" /></fieldset>
+                                    </fieldset>
+                                    <fieldset type="fieldset"><select name="picone"><option value="a">Choose A</option><option value="b">Choose B</option><option value="c">Choose C</option><option value="d">Choose D</option><option value="e">Choose E</option></select></fieldset>
+                                    <select
+                                        name="allthings" multiple="">
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="4">Three</option>
+                                        </select><button>submit</button></form>
+                            </div>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
