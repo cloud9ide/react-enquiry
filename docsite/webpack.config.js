@@ -34,6 +34,7 @@ module.exports = {
         loaders: [{
             test: /\.jsx?$/,
             loader: "babel-loader",
+            exclude: /node_modules/,
             query: {
                 presets: ["node6", "stage-0", "react"]
             }
