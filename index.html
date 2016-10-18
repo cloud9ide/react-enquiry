@@ -13,7 +13,7 @@
     <div id="app">
         <div id="doc-wrapper">
             <div id="doc-sidebar">
-                <nav id="doc-nav" class="pills padding-top-6 margin-2"><a href="#example-basic">Basic form example with validation</a><a href="#example-custom">Custom form elements</a><a href="#example-sink">The kitchen sink example</a></nav>
+                <nav id="doc-nav" class="pills padding-top-6 margin-2"><a href="#example-basic">Basic form example with validation</a></nav>
             </div>
             <div id="doc-contents" class="padding-4">
                 <div id="example-basic">
@@ -25,46 +25,6 @@
                                 <div><label>Password</label><input type="password" name="password" placeholder="********" value="" /><small class="text-color-danger"></small></div>
                                 <div><label>Confirm password</label><input type="password" name="confirm" placeholder="********" value="" /><small class="text-color-danger"></small></div>
                                 <div><textarea name="remarks"></textarea></div><br/><button class="solid fat important" type="submit">Create account</button></form>
-                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
-                        </div>
-                        <div class="col-md-8 col-lg-10"></div>
-                    </div>
-                    <hr class="margin-vertical-4" />
-                </div>
-                <div id="example-custom">
-                    <h1>Custom form elements</h1>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <form novalidate="">
-                                <fieldset><label for="id-email">Your e-mail address</label><input type="email" id="id-email" name="email" value="" /></fieldset>
-                                <fieldset><label for="id-name">Your name</label><input id="id-name" name="name" value="" /></fieldset>
-                                <fieldset><label for="id-profession">Your profession...</label><input id="id-profession" name="profession" value="" /></fieldset><button class="solid">Save...</button></form>
-                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
-                        </div>
-                        <div class="col-md-8 col-lg-10"></div>
-                    </div>
-                    <hr class="margin-vertical-4" />
-                </div>
-                <div id="example-sink">
-                    <h1>The kitchen sink example</h1>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div>
-                                <form novalidate="">
-                                    <fieldset><input type="text" id="id-foo" name="foo" value="" /></fieldset><textarea name="text" rows="3" placeholder="Tell me...">You can set a default value here too!</textarea>
-                                    <div><input type="radio" name="what" /> this<input type="radio" name="what" /> that</div>
-                                    <fieldset type="fieldset"><label><input type="checkbox" name="thing"/> I want one</label><label><input type="checkbox" name="thing"/> I want two</label><label><input type="checkbox" name="thing"/> I want three</label>
-                                        <fieldset type="fieldset">
-                                            <p>I am a deeply nested component</p><label>How much?</label><input type="number" name="howmuch" value="" /></fieldset>
-                                    </fieldset>
-                                    <fieldset type="fieldset"><select name="picone"><option value="a">Choose A</option><option value="b">Choose B</option><option value="c">Choose C</option><option value="d">Choose D</option><option value="e">Choose E</option></select></fieldset>
-                                    <select
-                                        name="allthings" multiple="">
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="4">Three</option>
-                                        </select><button>submit</button></form>
-                            </div>
                             <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
                         </div>
                         <div class="col-md-8 col-lg-10"></div>
