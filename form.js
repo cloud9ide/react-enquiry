@@ -1,25 +1,31 @@
 "use strict";
 
-var React = require('react');
-var clone = require("lodash/clone");
+const React = require('react');
+const clone = require("lodash/clone");
 
-var transformChildren = require("./lib/transform-children");
-var reduceRefs = require("./lib/reduce-refs");
+const transformChildren = require("./lib/transform-children");
+const reduceRefs = require("./lib/reduce-refs");
 
-var Form = React.createClass({
-    displayName: "Reform",
 
-    propTypes: {
+class Form extends React.Component {
+
+    static propTypes = {
         onSubmit: React.PropTypes.func,
         values: React.PropTypes.object,
         initialValues: React.PropTypes.object,
-    },
+    }
+    
+    constructor() {
+        super();
+        
+        this.onSubmit = this.onSubmit.bind(this);
+    }
 
-    componentDidMount: function() {
+    componentDidMount() {
         this.setValues(this.props.defaultValues);
-    },
+    }
 
-    isTentativelyValid: function() {
+    isTentativelyValid() {
         var fields = reduceRefs(this.refs);
 
         return Object.keys(fields).reduce(function(validated, key) {
@@ -31,9 +37,9 @@ var Form = React.createClass({
             validated[key] = field.isTentativelyValid();
             return validated;
         }, {});
-    },
+    }
 
-    validate: function(done) {
+    validate(done) {
         var fields = reduceRefs(this.refs);
         var values = this.getValues();
 
@@ -52,9 +58,9 @@ var Form = React.createClass({
             errors = undefined;
 
         return done(errors, values);
-    },
+    }
 
-    setValues: function(values) {
+    setValues(values) {
         if (typeof values !== 'object' || values === null)
             return;
 
@@ -74,9 +80,9 @@ var Form = React.createClass({
                 field.setValue(values[key]);
             }
         });
-    },
+    }
 
-    getValues: function() {
+    getValues() {
         var fields = reduceRefs(this.refs);
 
         return Object.keys(fields).reduce(function(values, key) {
@@ -100,21 +106,21 @@ var Form = React.createClass({
             values[key] = value;
             return values;
         }, {});
-    },
+    }
 
-    onSubmit: function(evt) {
+    onSubmit(evt) {
         evt.preventDefault();
         this.submit();
-    },
+    }
 
-    submit: function() {
+    submit() {
         this.validate(function(errors, values) {
             if (!this.props.onSubmit) return;
             this.props.onSubmit(errors, values, this);
         }.bind(this));
-    },
+    }
 
-    render: function() {
+    render() {
         var props = clone(this.props);
 
         delete (props.defaultValues);
@@ -124,7 +130,6 @@ var Form = React.createClass({
 
         return React.createElement("form", props, transformChildren(this.props.children, 0));
     }
-});
-
+}
 
 module.exports = Form;
