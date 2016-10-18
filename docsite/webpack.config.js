@@ -16,7 +16,8 @@ module.exports = {
 
     resolve: {
         alias: {
-            'react': path.join(__dirname, 'node_modules', 'react')
+            'enquiry': path.join(__dirname, '../'),
+            'react': path.join(__dirname, '../node_modules', 'react')
         },
     },
 

@@ -6,6 +6,10 @@
   "scripts": {
     "test": "for i in `git ls-files | grep _test.js`; do babel-node $i; done;",
     "tidy": "git ls-files | grep -E \".jsx?$\" | xargs esformatter -i",
+    "build": "cd docsite && ./scripts/source-gen.js && webpack",
+    "watch": "cd docsite && ./scripts/source-gen.js && webpack --watch",
+    "dev": "cd docsite && webpack-dev-server --host $IP --port $PORT --devtool eval --progress --colors --hot --content-base build",
+    "start": "cd docsite && npm run dev",
     "docs": "sh build-docs.sh"
   },
   "repository": {
@@ -30,16 +34,29 @@
     "lodash": "^4.6.1"
   },
   "devDependencies": {
+    "async": "^2.1.2",
     "babel": "^6.5.2",
     "babel-cli": "^6.16.0",
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-node6": "^11.0.0",
     "babel-preset-react": "^6.16.0",
+    "copy-webpack-plugin": "^3.0.1",
     "enzyme": "^2.4.1",
     "esformatter": "^0.9.6",
+    "js-beautify": "^1.6.4",
+    "lodash": "^4.16.4",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
-    "sinon": "^1.17.6"
+    "react-highlight": "^0.9.0",
+    "serve": "^1.4.0",
+    "sinon": "^1.17.6",
+    "static-site-generator-webpack-plugin": "^3.0.0",
+    "tape": "^4.6.2",
+    "watchy": "^0.6.6",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
   }
 }
