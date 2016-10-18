@@ -32,10 +32,10 @@ module.exports = {
 
     module: {
         loaders: [{
-            test: /\.jsx$/,
+            test: /\.jsx?$/,
             loader: "babel-loader",
             query: {
-                presets: ["es2015", "react"]
+                presets: ["node6", "stage-0", "react"]
             }
         }, {
             test: /\.css$/,
