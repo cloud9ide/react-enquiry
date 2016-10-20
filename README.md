@@ -14,7 +14,7 @@ easy and intiuitive validation.
 
 ### Usage
 
-Taken from [https://github.com/cloud9ide/react-enquiry/blob/master/docsite/site/example/Basic.jsx]
+Taken from https://github.com/cloud9ide/react-enquiry/blob/master/docsite/site/example/Basic.jsx
 
 ```javascript
     var Form = require("enquiry/form");
@@ -42,5 +42,5 @@ Taken from [https://github.com/cloud9ide/react-enquiry/blob/master/docsite/site/
 
 ### Documentation, examples
 
-Many examples can be found on the [http://cloud9ide.github.io/react-enquiry/](documentation site).
-Raw sources of the examples are located [https://github.com/cloud9ide/react-enquiry/tree/master/docsite/site/example](here).
+Many examples can be found on the [documentation site](http://cloud9ide.github.io/react-enquiry/).
+Raw sources of the examples are located [here](https://github.com/cloud9ide/react-enquiry/tree/master/docsite/site/example).
