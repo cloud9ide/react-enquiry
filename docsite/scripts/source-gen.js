@@ -9,19 +9,58 @@ var path = require("path");
 
 var BASE_PATH = path.resolve(path.dirname(__filename) + "/../site/");
 
-var sources = [{
-    title: "Basic form example with validation",
-    name: "basic",
-    source: "/example/Basic.jsx",
-}, {
-    title: "Custom form elements",
-    name: "custom",
-    source: "/example/Custom.jsx",
-}, {
-    title: "The kitchen sink example",
-    name: "sink",
-    source: "/example/TheSink.jsx",
-},];
+var sources = [
+    {
+        title: "Basic usage",
+        name: "basic",
+        source: "/example/Basic.jsx"
+    },
+    {
+        title: "Form validation",
+        name: "validation",
+        source: "/example/Validation.jsx"
+    },
+    {
+        title: "Advanced form valiation",
+        name: "advanced_validation",
+        source: "/example/ValidationAdvanced.jsx"
+    },
+    {
+        title: "Displaying errors",
+        name: "errors",
+        source: "/example/Errors.jsx"
+    },
+    {
+        title: "Responding to change",
+        name: "responding",
+        source: "/example/Responding.jsx"
+    },
+    {
+        title: "Radio buttons",
+        name: "radiobuttons",
+        source: "/example/RadioButtons.jsx"
+    },
+    {
+        title: "Check buttons",
+        name: "checkbuttons",
+        source: "/example/CheckButtons.jsx"
+    },
+    {
+        title: "Select inputs",
+        name: "select",
+        source: "/example/Select.jsx"
+    },
+    {
+        title: "Tentatively valid forms",
+        name: "tentatively",
+        source: "/example/Tentatively.jsx"
+    },
+    {
+        title: "Nested components in forms",
+        name: "nested",
+        source: "/example/Nested.jsx"
+    }
+];
 
 
 async.reduce(sources, {}, function(out, value, next) {
