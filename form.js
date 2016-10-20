@@ -14,10 +14,10 @@ class Form extends React.Component {
         values: React.PropTypes.object,
         initialValues: React.PropTypes.object,
     }
-    
+
     constructor() {
         super();
-        
+
         this.onSubmit = this.onSubmit.bind(this);
     }
 

@@ -18,6 +18,12 @@ var Fieldset = React.createClass({
         }
     },
 
+    getDefaultProps: function() {
+        return {
+            type: "div"
+        };
+    },
+
     render: function() {
         var props = clone(this.props);
 
