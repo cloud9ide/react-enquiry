@@ -21739,7 +21739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        "title": "Advanced form valiation"
 	    },
 	    "errors": {
-	        "source": "\"use strict\";\n\nvar Form = require(\"enquiry/form\");\nvar React = require(\"react\");\n\nfunction isRequired(value) {\n    if (value == \"\")\n        return \"This value is required.\";\n}\n\nfunction isNumber(value) {\n    if (!/^\\d+$/.test(value))\n        return \"Plese enter a numeric value.\";\n}\n\nfunction isWithinRange(start, end) {\n    return function (value) {\n        if (value < start || value > end)\n            return `Expected a value within the range ${start} to ${end}.`;\n    };\n}\n\nfunction Error({errors={}, name}) {\n    if (errors[name])\n        return <div style={{color: \"red\"}}>{errors[name]}</div>;\n    return null;\n}\n\nclass FormWithErrors extends React.Component {\n    constructor() {\n        super();\n        \n        this.state = {};\n        this.onSubmit = (errors, values, form) => {\n            this.setState({ errors: errors, success: !errors });\n        };\n    }\n\n    render() {\n        return (\n            <div>\n                <p>\n                    Enquiry does not handle display logic. Instead, capture validation\n                    errors inside  your component state and render where appropriate.<br/>\n                    <em>Note how validation is chained for super-re-useability</em>\n                </p>\n                <Form onSubmit={this.onSubmit}>\n                    <label>Please enter a number between 1 and 20</label>\n                    <input type=\"text\" name=\"test\" validation={[isRequired, isNumber, isWithinRange(1,20)]} />\n                    <Error errors={this.state.errors} name=\"test\" />\n                    <br/>\n                    <button className=\"solid fat important\" type=\"submit\">Submit</button>\n                </Form>\n            </div>\n        );\n    }\n}\n\nmodule.exports = FormWithErrors;",
+	        "source": "\"use strict\";\n\nvar Form = require(\"enquiry/form\");\nvar React = require(\"react\");\n\nfunction isRequired(value) {\n    if (value == \"\")\n        return \"This value is required.\";\n}\n\nfunction isNumber(value) {\n    if (!/^\\d+$/.test(value))\n        return \"Plese enter a numeric value.\";\n}\n\nfunction isWithinRange(start, end) {\n    return function(value) {\n        if (value < start || value > end)\n            return `Expected a value within the range ${start} to ${end}.`;\n    };\n}\n\nfunction Error({errors={}, name}) {\n    if (errors[name])\n        return <div style={{\n                color: \"red\"\n            }}>{errors[name]}</div>;\n    return null;\n}\n\nclass FormWithErrors extends React.Component {\n    constructor() {\n        super();\n\n        this.state = {};\n        this.onSubmit = (errors, values, form) => {\n            this.setState({\n                errors: errors,\n                success: !errors\n            });\n        };\n    }\n\n    render() {\n        return (\n            <div>\n                <p>\n                    Enquiry does not handle display logic. Instead, capture validation\n                    errors inside  your component state and render where appropriate.<br/>\n                    <em>Note how validation is chained for super-re-useability</em>\n                </p>\n                <Form onSubmit={this.onSubmit}>\n                    <label>Please enter a number between 1 and 20</label>\n                    <input type=\"text\" name=\"test\" validation={[isRequired, isNumber, isWithinRange(1,20)]} />\n                    <Error errors={this.state.errors} name=\"test\" />\n                    <br/>\n                    <button className=\"solid fat important\" type=\"submit\">Submit</button>\n                </Form>\n            </div>\n        );\n    }\n}\n\nmodule.exports = FormWithErrors;",
 	        "name": "errors",
 	        "title": "Displaying errors"
 	    },
@@ -21764,12 +21764,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        "title": "Select inputs"
 	    },
 	    "tentatively": {
-	        "source": "\"use strict\";\n\nvar Form = require(\"enquiry/form\");\nvar React = require(\"react\");\n\nfunction onSubmit(errors, values, form) {\n    alert(`The form returned the following values:\\n\\n${JSON.stringify(values, null, 2)}`);\n}\n\nfunction isRequired(value) {\n    if (value == \"\")\n        return \"This value is required.\";\n}\n\nclass TentativelyValid extends React.Component {\n    constructor() {\n        super();\n        \n        this.state = {};\n\n        this.onChange = (evt) => {\n            let valid = this.form.isTentativelyValid();\n\n            this.setState({\n                valid: Object.keys(valid).every(key => valid[key])\n            });\n        };\n    }\n\n    render() {\n        return (\n            <div>\n                <p>\n                    Sometimes you want to know if the form could be valid without\n                    actually validating the form.\n                    You can make a ref to your form and call <code>isTentativelyValid</code>.\n                    This will return an object with <code>true</code> or <code>false</code>\n                    for each form element.\n                </p>\n                <Form ref={(form) => this.form = form} onSubmit={onSubmit}>\n                    <label>You can only submit the form if you agree</label>\n                    <input name=\"name\" onChange={this.onChange} validation={isRequired} placeholder=\"Your name\" />\n                    <label>\n                        <input type=\"checkbox\" name=\"agree\" validation={isRequired} onChange={this.onChange} />\n                        I agree to the bla bla\n                    </label>\n                    <br/>\n                    <button disabled={!this.state.valid} className=\"solid fat important\" type=\"submit\">Submit</button>\n                </Form>\n            </div>\n        );\n    }\n}\n\nmodule.exports = TentativelyValid;",
+	        "source": "\"use strict\";\n\nvar Form = require(\"enquiry/form\");\nvar React = require(\"react\");\n\nfunction onSubmit(errors, values, form) {\n    alert(`The form returned the following values:\\n\\n${JSON.stringify(values, null, 2)}`);\n}\n\nfunction isRequired(value) {\n    if (value == \"\")\n        return \"This value is required.\";\n}\n\nclass TentativelyValid extends React.Component {\n    constructor() {\n        super();\n\n        this.state = {};\n\n        this.onChange = (evt) => {\n            let valid = this.form.isTentativelyValid;\n\n            this.setState({\n                valid: Object.keys(valid).every(key => valid[key])\n            });\n        };\n    }\n\n    render() {\n        return (\n            <div>\n                <p>\n                    Sometimes you want to know if the form could be valid without\n                    actually validating the form.\n                    You can make a ref to your form and call <code>isTentativelyValid</code>.\n                    This will return an object with <code>true</code> or <code>false</code>\n                    for each form element.\n                </p>\n                <Form ref={(form) => this.form = form} onSubmit={onSubmit}>\n                    <label>You can only submit the form if you agree</label>\n                    <input name=\"name\" onChange={this.onChange} validation={isRequired} placeholder=\"Your name\" />\n                    <label>\n                        <input type=\"checkbox\" name=\"agree\" validation={isRequired} onChange={this.onChange} />\n                        I agree to the bla bla\n                    </label>\n                    <br/>\n                    <button disabled={!this.state.valid} className=\"solid fat important\" type=\"submit\">Submit</button>\n                </Form>\n            </div>\n        );\n    }\n}\n\nmodule.exports = TentativelyValid;",
 	        "name": "tentatively",
 	        "title": "Tentatively valid forms"
 	    },
 	    "nested": {
-	        "source": "\"use strict\";\n\nvar Form = require(\"enquiry/form\");\nvar FieldWrapper = require(\"enquiry/field-wrapper\");\nvar Fieldset = require(\"enquiry/fieldset\");\nvar React = require(\"react\");\n\nfunction onSubmit(errors, values, form) {\n    alert(`The form returned the following values:\\n\\n${JSON.stringify(values, null, 2)}`);\n}\n\nclass TeaSection extends React.Component {\n    render() {\n        if (!this.props.visible)\n            return null;\n\n        return (\n            <FieldWrapper ref=\"tea\">\n                <h4>How do you like your tea?</h4>\n                <label>\n                    <input name=\"tea\" type=\"checkbox\" value=\"milk\" /> Milk please\n                </label>\n                <label>\n                    <input name=\"tea\" type=\"checkbox\" value=\"sugar\" /> Sugar\n                </label>\n                <label>\n                    <input name=\"tea\" type=\"checkbox\" value=\"biscuit\" /> And a biscuit\n                </label>\n            </FieldWrapper>\n        );\n    }\n}\n\nclass CoffeeSection extends React.Component {\n    render() {\n        if (!this.props.visible)\n            return null;\n\n        return (\n            <Fieldset ref=\"coffee\">\n                <h4>How do you like your coffee?</h4>\n                <label>\n                    <input name=\"coffee\" type=\"radio\" value=\"espresso\" /> Espresso\n                </label>\n                <label>\n                    <input name=\"coffee\" type=\"radio\" value=\"cappucino\" /> Cappucino\n                </label>\n                <label>\n                    <input name=\"coffee\" type=\"radio\" value=\"americano\" /> Americano\n                </label>\n            </Fieldset>\n        );\n    }\n}\n\n\nclass NestedForm extends React.Component {\n    constructor() {\n        super();\n        \n        this.state = {};\n\n        this.onChange = (evt) => {\n            this.setState(this.form.getValues());\n        };\n    }\n\n    render() {\n        return (\n            <div>\n                <p>\n                    You can create sub-form components using the <code>Fieldset</code>\n                    or <code>FieldWrapper</code> components.\n                </p>\n                <pre>\n                    const Fieldset = require(\"enquiry/fieldset\");<br/>\n                    const FieldWrapper = require(\"enquiry/field-wrapper\");\n                </pre>\n                <h3>N.B.</h3>\n                <p>\n                    Enquiry needs to be able to reach the children of each child-component.\n                    You <strong>must</strong> define a ref attribute on your Fieldset or \n                    FieldWrapper for this to work. \n                </p>\n                <h3>N.B.</h3>\n                <p>\n                    Functional components don't support refs yet. You need to create a\n                    manage component (using <code>class</code> or <code>React.createClass</code>)\n                </p>\n                <Form ref={(form) => this.form = form} onSubmit={onSubmit}>\n                    <h4>What would you like to drink?</h4>\n                    <label>\n                        <input name=\"beverage\" type=\"radio\" value=\"tea\" onChange={this.onChange} /> Tea\n                    </label>\n                    <label>\n                        <input name=\"beverage\" type=\"radio\" value=\"coffee\" onChange={this.onChange} /> Coffee\n                    </label>\n                    \n                    <TeaSection visible={this.state.beverage == \"tea\"} />\n                    <CoffeeSection visible={this.state.beverage == \"coffee\"} />\n\n                    <button className=\"solid fat important\" type=\"submit\">Submit</button>\n                </Form>\n            </div>\n        );\n    }\n}\n\nmodule.exports = NestedForm;",
+	        "source": "\"use strict\";\n\nvar Form = require(\"enquiry/form\");\nvar FieldWrapper = require(\"enquiry/field-wrapper\");\nvar Fieldset = require(\"enquiry/fieldset\");\nvar React = require(\"react\");\n\nfunction onSubmit(errors, values, form) {\n    alert(`The form returned the following values:\\n\\n${JSON.stringify(values, null, 2)}`);\n}\n\nclass TeaSection extends React.Component {\n    render() {\n        if (!this.props.visible)\n            return null;\n\n        return (\n            <FieldWrapper ref=\"tea\">\n                <h4>How do you like your tea?</h4>\n                <label>\n                    <input name=\"tea\" type=\"checkbox\" value=\"milk\" /> Milk please\n                </label>\n                <label>\n                    <input name=\"tea\" type=\"checkbox\" value=\"sugar\" /> Sugar\n                </label>\n                <label>\n                    <input name=\"tea\" type=\"checkbox\" value=\"biscuit\" /> And a biscuit\n                </label>\n            </FieldWrapper>\n        );\n    }\n}\n\nclass CoffeeSection extends React.Component {\n    render() {\n        if (!this.props.visible)\n            return null;\n\n        return (\n            <Fieldset ref=\"coffee\">\n                <h4>How do you like your coffee?</h4>\n                <label>\n                    <input name=\"coffee\" type=\"radio\" value=\"espresso\" /> Espresso\n                </label>\n                <label>\n                    <input name=\"coffee\" type=\"radio\" value=\"cappucino\" /> Cappucino\n                </label>\n                <label>\n                    <input name=\"coffee\" type=\"radio\" value=\"americano\" /> Americano\n                </label>\n            </Fieldset>\n        );\n    }\n}\n\n\nclass NestedForm extends React.Component {\n    constructor() {\n        super();\n\n        this.state = {};\n\n        this.onChange = (evt) => {\n            this.setState(this.form.values);\n        };\n    }\n\n    render() {\n        return (\n            <div>\n                <p>\n                    You can create sub-form components using the <code>Fieldset</code>\n                    or <code>FieldWrapper</code> components.\n                </p>\n                <pre>\n                    const Fieldset = require(\"enquiry/fieldset\");<br/>\n                    const FieldWrapper = require(\"enquiry/field-wrapper\");\n                </pre>\n                <h3>N.B.</h3>\n                <p>\n                    Enquiry needs to be able to reach the children of each child-component.\n                    You <strong>must</strong> define a ref attribute on your Fieldset or \n                    FieldWrapper for this to work. \n                </p>\n                <h3>N.B.</h3>\n                <p>\n                    Functional components don't support refs yet. You need to create a\n                    manage component (using <code>class</code> or <code>React.createClass</code>)\n                </p>\n                <Form ref={(form) => this.form = form} onSubmit={onSubmit}>\n                    <h4>What would you like to drink?</h4>\n                    <label>\n                        <input name=\"beverage\" type=\"radio\" value=\"tea\" onChange={this.onChange} /> Tea\n                    </label>\n                    <label>\n                        <input name=\"beverage\" type=\"radio\" value=\"coffee\" onChange={this.onChange} /> Coffee\n                    </label>\n                    \n                    <TeaSection visible={this.state.beverage == \"tea\"} />\n                    <CoffeeSection visible={this.state.beverage == \"coffee\"} />\n\n                    <button className=\"solid fat important\" type=\"submit\">Submit</button>\n                </Form>\n            </div>\n        );\n    }\n}\n\nmodule.exports = NestedForm;",
 	        "name": "nested",
 	        "title": "Nested components in forms"
 	    }
@@ -21782,15 +21782,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 
 	module.exports.basic = __webpack_require__(180);
-	module.exports.validation = __webpack_require__(320);
-	module.exports.advanced_validation = __webpack_require__(321);
-	module.exports.errors = __webpack_require__(322);
-	module.exports.responding = __webpack_require__(323);
-	module.exports.radiobuttons = __webpack_require__(324);
-	module.exports.checkbuttons = __webpack_require__(325);
-	module.exports.select = __webpack_require__(326);
-	module.exports.tentatively = __webpack_require__(327);
-	module.exports.nested = __webpack_require__(328);
+	module.exports.validation = __webpack_require__(321);
+	module.exports.advanced_validation = __webpack_require__(322);
+	module.exports.errors = __webpack_require__(323);
+	module.exports.responding = __webpack_require__(324);
+	module.exports.radiobuttons = __webpack_require__(325);
+	module.exports.checkbuttons = __webpack_require__(326);
+	module.exports.select = __webpack_require__(327);
+	module.exports.tentatively = __webpack_require__(328);
+	module.exports.nested = __webpack_require__(329);
 
 /***/ },
 /* 180 */
@@ -21850,7 +21850,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	const transformChildren = __webpack_require__(284);
 	const reduceRefs = __webpack_require__(319);
 
-	class Form extends React.Component {
+	const Wrapper = __webpack_require__(320);
+
+	class Form extends Wrapper {
 
 	    constructor() {
 	        super();
@@ -21860,38 +21862,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    componentDidMount() {
 	        this.setValues(this.props.defaultValues);
-	    }
-
-	    isTentativelyValid() {
-	        var fields = reduceRefs(this.refs);
-
-	        return Object.keys(fields).reduce(function (validated, key) {
-	            var field = fields[key];
-
-	            if (!field.isTentativelyValid) return validated;
-
-	            validated[key] = field.isTentativelyValid();
-	            return validated;
-	        }, {});
-	    }
-
-	    validate(done) {
-	        var fields = reduceRefs(this.refs);
-	        var values = this.getValues();
-
-	        var errors = Object.keys(fields).reduce(function (errors, key) {
-	            if (!fields[key].validate) return errors;
-
-	            var error = fields[key].validate(values[key], values);
-
-	            if (error) errors[key] = error;
-
-	            return errors;
-	        }, {});
-
-	        if (Object.keys(errors).length == 0) errors = undefined;
-
-	        return done(errors, values);
 	    }
 
 	    setValues(values) {
@@ -21912,30 +21882,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                field.setValue(values[key]);
 	            }
 	        });
-	    }
-
-	    getValues() {
-	        var fields = reduceRefs(this.refs);
-
-	        return Object.keys(fields).reduce(function (values, key) {
-	            var field = fields[key];
-	            var value;
-
-	            if (Array.isArray(field)) {
-	                value = field.reduce(function (values, field) {
-	                    if (field.isRadio() && field.isChecked()) return field.getValue();
-
-	                    if (field.isChecbox() && field.isChecked()) values.push(field.getValue());
-
-	                    return values;
-	                }, []);
-	            } else {
-	                value = field.getValue();
-	            }
-
-	            values[key] = value;
-	            return values;
-	        }, {});
 	    }
 
 	    onSubmit(evt) {
@@ -26237,6 +26183,108 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 
+	const React = __webpack_require__(1);
+
+	const transformChildren = __webpack_require__(284);
+	const reduceRefs = __webpack_require__(319);
+	const clone = __webpack_require__(182);
+
+	class FieldWrapper extends React.Component {
+
+	    get fields() {
+	        return reduceRefs(this.refs);
+	    }
+
+	    get values() {
+	        var fields = this.fields;
+
+	        return Object.keys(fields).reduce(function (values, key) {
+	            var field = fields[key];
+	            var value;
+
+	            if (Array.isArray(field)) {
+	                value = field.reduce(function (values, field) {
+	                    if (field.isRadio() && field.isChecked()) return field.getValue();
+
+	                    if (field.isChecbox() && field.isChecked()) values.push(field.getValue());
+
+	                    return values;
+	                }, []);
+	            } else {
+	                value = field.getValue();
+	            }
+
+	            values[key] = value;
+	            return values;
+	        }, {});
+	    }
+
+	    get isTentativelyValid() {
+	        var fields = this.fields;
+
+	        return Object.keys(fields).reduce(function (validated, key) {
+	            var field = fields[key];
+
+	            if (!field.isTentativelyValid) return validated;
+
+	            validated[key] = field.isTentativelyValid();
+	            return validated;
+	        }, {});
+	    }
+
+	    validate(done) {
+	        var fields = this.fields;
+	        var values = this.values;
+
+	        var errors = Object.keys(fields).reduce(function (errors, key) {
+	            if (!fields[key].validate) return errors;
+
+	            var error = fields[key].validate(values[key], values);
+
+	            if (error) errors[key] = error;
+
+	            return errors;
+	        }, {});
+
+	        if (Object.keys(errors).length == 0) errors = undefined;
+
+	        return done(errors, values);
+	    }
+
+	    render() {
+	        var props = clone(this.props);
+
+	        delete props.defaultValues;
+	        delete props.type;
+
+	        props.onSubmit = this.onSubmit;
+	        props.noValidate = true;
+
+	        return React.createElement(this.props.type, props, transformChildren(this.props.children, 0));
+	    }
+
+	}
+
+	FieldWrapper.propTypes = {
+	    type: (props, propName, componentName) => {
+	        const value = props[propName];
+
+	        if (typeof value !== "string") return new Error("Validation failed: expected type to be a string");
+
+	        if (value == "form") return new Error("Validation warning: type should not be \"form\"");
+	    }
+	};
+	FieldWrapper.defaultProps = {
+	    type: "div"
+	};
+	module.exports = FieldWrapper;
+
+/***/ },
+/* 321 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
 	var Form = __webpack_require__(181);
 	var React = __webpack_require__(1);
 
@@ -26299,7 +26347,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 321 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26403,7 +26451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 322 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26440,7 +26488,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (errors[name]) return React.createElement(
 	        "div",
-	        { style: { color: "red" } },
+	        { style: {
+	                color: "red"
+	            } },
 	        errors[name]
 	    );
 	    return null;
@@ -26456,7 +26506,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _this.state = {};
 	        _this.onSubmit = function (errors, values, form) {
-	            _this.setState({ errors: errors, success: !errors });
+	            _this.setState({
+	                errors: errors,
+	                success: !errors
+	            });
 	        };
 	        return _this;
 	    }
@@ -26505,7 +26558,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = FormWithErrors;
 
 /***/ },
-/* 323 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26632,7 +26685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = FormWithErrors;
 
 /***/ },
-/* 324 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26697,7 +26750,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = RadioButtons;
 
 /***/ },
-/* 325 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26767,7 +26820,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = RadioButtons;
 
 /***/ },
-/* 326 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26879,7 +26932,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26914,7 +26967,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _this.state = {};
 
 	        _this.onChange = function (evt) {
-	            var valid = _this.form.isTentativelyValid();
+	            var valid = _this.form.isTentativelyValid;
 
 	            _this.setState({
 	                valid: Object.keys(valid).every(function (key) {
@@ -26990,7 +27043,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TentativelyValid;
 
 /***/ },
-/* 328 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27004,7 +27057,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Form = __webpack_require__(181);
-	var FieldWrapper = __webpack_require__(329);
+	var FieldWrapper = __webpack_require__(320);
 	var Fieldset = __webpack_require__(330);
 	var React = __webpack_require__(1);
 
@@ -27117,7 +27170,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _this3.state = {};
 
 	        _this3.onChange = function (evt) {
-	            _this3.setState(_this3.form.getValues());
+	            _this3.setState(_this3.form.values);
 	        };
 	        return _this3;
 	    }
@@ -27232,76 +27285,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = NestedForm;
 
 /***/ },
-/* 329 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var React = __webpack_require__(1);
-
-	var transformChildren = __webpack_require__(284);
-	var clone = __webpack_require__(182);
-
-	var Fieldset = React.createClass({
-	    displayName: "Fieldset",
-
-	    propTypes: {
-	        type: function (props, propName, componentName) {
-	            var value = props[propName];
-
-	            if (typeof value !== "string") return new Error("Validation failed: expected type to be a string");
-
-	            if (value == "form") return new Error("Validation warning: type should not be \"form\"");
-	        }
-	    },
-
-	    getDefaultProps: function () {
-	        return {
-	            type: "div"
-	        };
-	    },
-
-	    render: function () {
-	        var props = clone(this.props);
-
-	        delete props.defaultValues;
-	        delete props.type;
-
-	        props.onSubmit = this.onSubmit;
-	        props.noValidate = true;
-
-	        return React.createElement(this.props.type, props, transformChildren(this.props.children, 0));
-	    }
-	});
-
-	module.exports = Fieldset;
-
-/***/ },
 /* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var React = __webpack_require__(1);
-	var clone = __webpack_require__(182);
+	const Wrapper = __webpack_require__(320);
 
-	var transformChildren = __webpack_require__(284);
+	class Fieldset extends Wrapper {}
 
-	var Fieldset = React.createClass({
-	    displayName: "Fieldset",
-
-	    render: function () {
-	        var props = clone(this.props);
-
-	        delete props.defaultValues;
-
-	        props.onSubmit = this.onSubmit;
-	        props.noValidate = true;
-
-	        return React.createElement("fieldset", this.props, transformChildren(this.props.children, 0));
-	    }
-	});
-
+	Fieldset.defaultProps = {
+	    type: "fieldset"
+	};
 	module.exports = Fieldset;
 
 /***/ },

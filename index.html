@@ -25,7 +25,7 @@
                             <div>
                                 <p>This example shows the most basic form.</p>
                                 <p>Enquiry captures submit events and reads data from the form.</p>
-                                <form novalidate=""><label>Enter some text and press submit</label><input type="text" name="test" value="" /><br/><button class="solid fat important" type="submit">Submit</button></form>
+                                <form type="div" novalidate=""><label>Enter some text and press submit</label><input type="text" name="test" value="" /><br/><button class="solid fat important" type="submit">Submit</button></form>
                             </div>
                             <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
                         </div>
@@ -40,7 +40,7 @@
                             <div>
                                 <p>Form validation is done by supplying a <em>validation</em> function as an attribut to your inputs. A validation funciton takes two arguments: <code>(value, values)</code>.</p>
                                 <p>Reform captures submit events and reads data and validates the form.</p>
-                                <form novalidate=""><label>Please enter a valid username (a-z and 0-9)</label><input type="text" name="test" value="" /><br/><button class="solid fat important" type="submit">Submit</button></form>
+                                <form type="div" novalidate=""><label>Please enter a valid username (a-z and 0-9)</label><input type="text" name="test" value="" /><br/><button class="solid fat important" type="submit">Submit</button></form>
                             </div>
                             <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
                         </div>
@@ -57,7 +57,7 @@
                                     all values in the form as a javascript object.</p>
                                 <p>The <code>validation</code> attribute can be either a function or an array of functions, where each validation is only executed if the previous validation was successful.</p>
                                 <p>Reform captures submit events and reads data and validates the form.</p>
-                                <form novalidate=""><label>Please enter a valid username (a-z and 0-9)</label><input type="text" name="test" value="" /><label>Please pick a password</label><input type="password" name="password" value="" /><label>Type your password again to confirm</label><input
+                                <form type="div" novalidate=""><label>Please enter a valid username (a-z and 0-9)</label><input type="text" name="test" value="" /><label>Please pick a password</label><input type="password" name="password" value="" /><label>Type your password again to confirm</label><input
                                         type="password" name="password_confirm" value="" /><br/><button class="solid fat important" type="submit">Submit</button></form>
                             </div>
                             <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
@@ -72,7 +72,8 @@
                         <div class="col-md-5">
                             <div>
                                 <p>Enquiry does not handle display logic. Instead, capture validation errors inside your component state and render where appropriate.<br/><em>Note how validation is chained for super-re-useability</em></p>
-                                <form novalidate=""><label>Please enter a number between 1 and 20</label><input type="text" name="test" value="" /><br/><button class="solid fat important" type="submit">Submit</button></form>
+                                <form type="div"
+                                    novalidate=""><label>Please enter a number between 1 and 20</label><input type="text" name="test" value="" /><br/><button class="solid fat important" type="submit">Submit</button></form>
                             </div>
                             <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
                         </div>
@@ -87,7 +88,7 @@
                             <div>
                                 <p>You can set an `onChange` on your input, just like you would do in a &quot;plain old form&quot;. Enquiry stil keeps track of your values and validations.</p>
                                 <p><em>Type something to move the progress-bar. Hit submit to trigger validation</em></p>
-                                <form novalidate=""><label>The password strength-meter</label><input type="password" name="test" placeholder="Try me!" value="" />
+                                <form type="div" novalidate=""><label>The password strength-meter</label><input type="password" name="test" placeholder="Try me!" value="" />
                                     <div style="background-color:#eee;border-radius:5px;">
                                         <div style="width:0%;height:15px;border-radius:5px;background-color:red;"></div>
                                     </div><br/><button class="solid fat important" type="submit">Submit</button></form>
@@ -104,7 +105,7 @@
                         <div class="col-md-5">
                             <div>
                                 <p>Use the normal <code>input[type=&quot;radio&quot;]</code> to create radio buttons.</p>
-                                <form novalidate="">
+                                <form type="div" novalidate="">
                                     <h4>Choose your topping:</h4><label><input type="radio" name="topping"/> Pizza Funghi</label><label><input type="radio" name="topping"/> Pizza Vegetariana</label><label><input type="radio" name="topping"/> Pizza Salame</label>
                                     <button
                                         class="solid fat important" type="submit">Submit</button>
@@ -123,7 +124,7 @@
                             <div>
                                 <p>Use the normal <code>input[type=&quot;checkbox&quot;]</code> to create checkboxes.</p>
                                 <p>Enquiry will create an array of values for each checked item</p>
-                                <form novalidate="">
+                                <form type="div" novalidate="">
                                     <h4>How do you like your tea?</h4><label><input type="checkbox" name="tea"/> Milk please</label><label><input type="checkbox" name="tea"/> Sugar</label><label><input type="checkbox" name="tea"/> And a biscuit</label>
                                     <button
                                         class="solid fat important" type="submit">Submit</button>
@@ -142,7 +143,7 @@
                             <div>
                                 <p>Form validation is done by supplying a <em>validation</em> function as an attribut to your inputs. A validation funciton takes two arguments: <code>(value, values)</code>.</p>
                                 <p>Reform captures submit events and reads data and validates the form.</p>
-                                <form novalidate=""><label>You can validate and use selects like any other input element:</label><select name="beverage"><option selected="" value="" disabled="">Pick one</option><option value="water">Water</option><option value="sodapop">Soda Pop</option><option value="milk">Milk</option></select><label>When you specify &quot;multiple&quot; values turn into an array</label>
+                                <form type="div" novalidate=""><label>You can validate and use selects like any other input element:</label><select name="beverage"><option selected="" value="" disabled="">Pick one</option><option value="water">Water</option><option value="sodapop">Soda Pop</option><option value="milk">Milk</option></select><label>When you specify &quot;multiple&quot; values turn into an array</label>
                                     <select
                                         name="food" multiple="">
                                         <option value="cake">Cake</option>
@@ -163,7 +164,7 @@
                             <div>
                                 <p>Sometimes you want to know if the form could be valid without actually validating the form. You can make a ref to your form and call <code>isTentativelyValid</code>. This will return an object with <code>true</code> or
                                     <code>false</code>for each form element.</p>
-                                <form novalidate=""><label>You can only submit the form if you agree</label><input name="name" placeholder="Your name" value="" /><label><input type="checkbox" name="agree"/>I agree to the bla bla</label><br/><button disabled="" class="solid fat important"
+                                <form type="div" novalidate=""><label>You can only submit the form if you agree</label><input name="name" placeholder="Your name" value="" /><label><input type="checkbox" name="agree"/>I agree to the bla bla</label><br/><button disabled="" class="solid fat important"
                                         type="submit">Submit</button></form>
                             </div>
                             <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
@@ -182,7 +183,7 @@
                                 <p>Enquiry needs to be able to reach the children of each child-component. You <strong>must</strong> define a ref attribute on your Fieldset or FieldWrapper for this to work.</p>
                                 <h3>N.B.</h3>
                                 <p>Functional components don&#x27;t support refs yet. You need to create a manage component (using <code>class</code> or <code>React.createClass</code>)</p>
-                                <form novalidate="">
+                                <form type="div" novalidate="">
                                     <h4>What would you like to drink?</h4><label><input type="radio" name="beverage"/> Tea</label><label><input type="radio" name="beverage"/> Coffee</label><button class="solid fat important" type="submit">Submit</button></form>
                             </div>
                             <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
