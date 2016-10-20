@@ -1,3 +1,10 @@
 module.exports.basic = require("./example/Basic.jsx");
-module.exports.custom = require("./example/Custom.jsx");
-module.exports.sink = require("./example/TheSink.jsx");
+module.exports.validation = require("./example/Validation.jsx");
+module.exports.advanced_validation = require("./example/ValidationAdvanced.jsx");
+module.exports.errors = require("./example/Errors.jsx");
+module.exports.responding = require("./example/Responding.jsx");
+module.exports.radiobuttons = require("./example/RadioButtons.jsx");
+module.exports.checkbuttons = require("./example/CheckButtons.jsx");
+module.exports.select = require("./example/Select.jsx");
+module.exports.tentatively = require("./example/Tentatively.jsx");
+module.exports.nested = require("./example/Nested.jsx");
