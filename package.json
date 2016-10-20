@@ -6,10 +6,10 @@
   "scripts": {
     "test": "for i in `git ls-files | grep _test.js`; do babel-node $i; done;",
     "tidy": "git ls-files | grep -E \".jsx?$\" | xargs esformatter -i",
+    "examples": "cd docsite && ./scripts/source-gen.js",
     "build": "cd docsite && ./scripts/source-gen.js && webpack",
     "watch": "cd docsite && ./scripts/source-gen.js && webpack --watch",
-    "dev": "cd docsite && webpack-dev-server --host $IP --port $PORT --devtool eval --progress --colors --hot --content-base build",
-    "start": "cd docsite && npm run dev",
+    "dev": "cd docsite && ./scripts/source-gen.js && webpack-dev-server --host $IP --port $PORT --devtool eval --progress --colors --hot --content-base build",
     "docs": "sh build-docs.sh"
   },
   "repository": {
