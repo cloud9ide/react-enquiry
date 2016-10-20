@@ -14,7 +14,7 @@ function isNumber(value) {
 }
 
 function isWithinRange(start, end) {
-    return function (value) {
+    return function(value) {
         if (value < start || value > end)
             return `Expected a value within the range ${start} to ${end}.`;
     };
@@ -22,17 +22,22 @@ function isWithinRange(start, end) {
 
 function Error({errors={}, name}) {
     if (errors[name])
-        return <div style={{color: "red"}}>{errors[name]}</div>;
+        return <div style={{
+                color: "red"
+            }}>{errors[name]}</div>;
     return null;
 }
 
 class FormWithErrors extends React.Component {
     constructor() {
         super();
-        
+
         this.state = {};
         this.onSubmit = (errors, values, form) => {
-            this.setState({ errors: errors, success: !errors });
+            this.setState({
+                errors: errors,
+                success: !errors
+            });
         };
     }
 

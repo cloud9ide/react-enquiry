@@ -57,11 +57,11 @@ class CoffeeSection extends React.Component {
 class NestedForm extends React.Component {
     constructor() {
         super();
-        
+
         this.state = {};
 
         this.onChange = (evt) => {
-            this.setState(this.form.getValues());
+            this.setState(this.form.values);
         };
     }
 

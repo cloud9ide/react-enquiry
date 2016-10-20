@@ -15,11 +15,11 @@ function isRequired(value) {
 class TentativelyValid extends React.Component {
     constructor() {
         super();
-        
+
         this.state = {};
 
         this.onChange = (evt) => {
-            let valid = this.form.isTentativelyValid();
+            let valid = this.form.isTentativelyValid;
 
             this.setState({
                 valid: Object.keys(valid).every(key => valid[key])

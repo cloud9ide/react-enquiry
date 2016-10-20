@@ -125,7 +125,7 @@ var TheSink = React.createClass({
     },
 
     onChange: function() {
-        console.log(this.refs.fooform.isTentativelyValid());
+        console.log(this.refs.fooform.isTentativelyValid);
     },
 
     render: function() {
