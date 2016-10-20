@@ -6,8 +6,10 @@ const clone = require("lodash/clone");
 const transformChildren = require("./lib/transform-children");
 const reduceRefs = require("./lib/reduce-refs");
 
+const Wrapper = require("./field-wrapper");
 
-class Form extends React.Component {
+
+class Form extends Wrapper {
 
     static propTypes = {
         onSubmit: React.PropTypes.func,
@@ -23,41 +25,6 @@ class Form extends React.Component {
 
     componentDidMount() {
         this.setValues(this.props.defaultValues);
-    }
-
-    isTentativelyValid() {
-        var fields = reduceRefs(this.refs);
-
-        return Object.keys(fields).reduce(function(validated, key) {
-            var field = fields[key];
-
-            if (!field.isTentativelyValid)
-                return validated;
-
-            validated[key] = field.isTentativelyValid();
-            return validated;
-        }, {});
-    }
-
-    validate(done) {
-        var fields = reduceRefs(this.refs);
-        var values = this.getValues();
-
-        var errors = Object.keys(fields).reduce(function(errors, key) {
-            if (!fields[key].validate) return errors;
-
-            var error = fields[key].validate(values[key], values);
-
-            if (error)
-                errors[key] = error;
-
-            return errors;
-        }, {});
-
-        if (Object.keys(errors).length == 0)
-            errors = undefined;
-
-        return done(errors, values);
     }
 
     setValues(values) {
@@ -80,32 +47,6 @@ class Form extends React.Component {
                 field.setValue(values[key]);
             }
         });
-    }
-
-    getValues() {
-        var fields = reduceRefs(this.refs);
-
-        return Object.keys(fields).reduce(function(values, key) {
-            var field = fields[key];
-            var value;
-
-            if (Array.isArray(field)) {
-                value = field.reduce(function(values, field) {
-                    if (field.isRadio() && field.isChecked())
-                        return field.getValue();
-
-                    if (field.isChecbox() && field.isChecked())
-                        values.push(field.getValue());
-
-                    return values;
-                }, []);
-            } else {
-                value = field.getValue();
-            }
-
-            values[key] = value;
-            return values;
-        }, {});
     }
 
     onSubmit(evt) {
