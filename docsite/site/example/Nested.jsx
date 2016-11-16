@@ -6,7 +6,9 @@ var Fieldset = require("enquiry/fieldset");
 var React = require("react");
 
 function onSubmit(errors, values, form) {
-    alert(`The form returned the following values:\n\n${JSON.stringify(values, null, 2)}`);
+    alert(`The form returned the following values:
+
+${JSON.stringify(values, null, 2)}`);
 }
 
 class TeaSection extends React.Component {
@@ -27,7 +29,7 @@ class TeaSection extends React.Component {
                     <input name="tea" type="checkbox" value="biscuit" /> And a biscuit
                 </label>
             </FieldWrapper>
-        );
+            );
     }
 }
 
@@ -49,7 +51,7 @@ class CoffeeSection extends React.Component {
                     <input name="coffee" type="radio" value="americano" /> Americano
                 </label>
             </Fieldset>
-        );
+            );
     }
 }
 
@@ -102,7 +104,7 @@ class NestedForm extends React.Component {
                     <button className="solid fat important" type="submit">Submit</button>
                 </Form>
             </div>
-        );
+            );
     }
 }
 

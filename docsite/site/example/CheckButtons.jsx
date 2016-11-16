@@ -4,7 +4,9 @@ var Form = require("enquiry/form");
 var React = require("react");
 
 function onSubmit(errors, values, form) {
-    alert(`The form returned the following values:\n\n${JSON.stringify(values, null, 2)}`);
+    alert(`The form returned the following values:
+
+${JSON.stringify(values, null, 2)}`);
 }
 
 function RadioButtons() {
@@ -26,7 +28,7 @@ function RadioButtons() {
                 <button className="solid fat important" type="submit">Submit</button>
             </Form>
         </div>
-    );
+        );
 }
 
 module.exports = RadioButtons;

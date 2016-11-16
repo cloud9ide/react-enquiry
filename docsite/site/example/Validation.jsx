@@ -5,9 +5,13 @@ var React = require("react");
 
 function onSubmit(errors, values, form) {
     if (errors)
-        return alert(`Your form was not valid. it contained the following errors: \n\n${JSON.stringify(errors, null, 2)}`);
-    
-    alert(`The form was valid! values:\n\n${JSON.stringify(values, null, 2)}`);
+        return alert(`Your form was not valid. it contained the following errors: 
+
+${JSON.stringify(errors, null, 2)}`);
+
+    alert(`The form was valid! values:
+
+${JSON.stringify(values, null, 2)}`);
 }
 
 /**
@@ -33,5 +37,5 @@ module.exports = function SimpleForm() {
                 <button className="solid fat important" type="submit">Submit</button>
             </Form>
         </div>
-    );
+        );
 };

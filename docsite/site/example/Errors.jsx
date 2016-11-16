@@ -51,13 +51,13 @@ class FormWithErrors extends React.Component {
                 </p>
                 <Form onSubmit={this.onSubmit}>
                     <label>Please enter a number between 1 and 20</label>
-                    <input type="text" name="test" validation={[isRequired, isNumber, isWithinRange(1,20)]} />
+                    <input type="text" name="test" validation={[isRequired, isNumber, isWithinRange(1, 20)]} />
                     <Error errors={this.state.errors} name="test" />
                     <br/>
                     <button className="solid fat important" type="submit">Submit</button>
                 </Form>
             </div>
-        );
+            );
     }
 }
 

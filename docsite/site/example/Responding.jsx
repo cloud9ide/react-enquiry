@@ -10,31 +10,36 @@ function isRequired(value) {
 
 function isStrongPassword(value) {
     let entropy = Math.round(value.length * (Math.log(255) / Math.log(2)));
-    
+
     if (entropy < 100)
         return "Please choose a stronger password";
 }
 
 function Progress({progress=0}) {
     let done = Math.round(Math.min(progress, 100));
-    
+
     let style = {
         width: `${done}%`,
         height: "15px",
         borderRadius: "5px",
         backgroundColor: done > 50 ? "green" : "red"
     };
-    
+
     return (
-        <div style={{backgroundColor: "#eee", borderRadius: "5px"}}>
+        <div style={{
+            backgroundColor: "#eee",
+            borderRadius: "5px"
+        }}>
             <div style={style} />
         </div>
-    );
+        );
 }
 
 function Error({errors={}, name}) {
     if (errors[name])
-        return <div style={{color: "red"}}>{errors[name]}</div>;
+        return <div style={{
+                color: "red"
+            }}>{errors[name]}</div>;
     return null;
 }
 
@@ -42,15 +47,20 @@ function Error({errors={}, name}) {
 class FormWithErrors extends React.Component {
     constructor() {
         super();
-        
+
         this.state = {};
 
         this.onSubmit = (errors, values, form) => {
-            this.setState({ errors: errors, success: !errors });
+            this.setState({
+                errors: errors,
+                success: !errors
+            });
         };
 
         this.onChange = (evt) => {
-            this.setState({ entropy: Math.round(evt.target.value.length * (Math.log(255) / Math.log(2)))/2 });
+            this.setState({
+                entropy: Math.round(evt.target.value.length * (Math.log(255) / Math.log(2))) / 2
+            });
         };
     }
 
@@ -72,7 +82,7 @@ class FormWithErrors extends React.Component {
                     <button className="solid fat important" type="submit">Submit</button>
                 </Form>
             </div>
-        );
+            );
     }
 }
 

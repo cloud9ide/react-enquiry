@@ -4,7 +4,9 @@ var Form = require("enquiry/form");
 var React = require("react");
 
 function onSubmit(errors, values, form) {
-    alert(`The form returned the following values:\n\n${JSON.stringify(values, null, 2)}`);
+    alert(`The form returned the following values:
+
+${JSON.stringify(values, null, 2)}`);
 }
 
 function isRequired(value) {
@@ -48,7 +50,7 @@ class TentativelyValid extends React.Component {
                     <button disabled={!this.state.valid} className="solid fat important" type="submit">Submit</button>
                 </Form>
             </div>
-        );
+            );
     }
 }
 
