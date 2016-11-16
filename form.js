@@ -11,12 +11,6 @@ const Wrapper = require("./field-wrapper");
 
 class Form extends Wrapper {
 
-    static propTypes = {
-        onSubmit: React.PropTypes.func,
-        values: React.PropTypes.object,
-        initialValues: React.PropTypes.object,
-    }
-
     constructor() {
         super();
 
@@ -72,5 +66,11 @@ class Form extends Wrapper {
         return React.createElement("form", props, transformChildren(this.props.children, 0));
     }
 }
+
+Form.propTypes = {
+    onSubmit: React.PropTypes.func,
+    values: React.PropTypes.object,
+    initialValues: React.PropTypes.object,
+};
 
 module.exports = Form;

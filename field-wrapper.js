@@ -7,22 +7,6 @@ const reduceRefs = require("./lib/reduce-refs");
 const clone = require("lodash/clone");
 
 class FieldWrapper extends React.Component {
-    static propTypes = {
-        type: (props, propName, componentName) => {
-            const value = props[propName];
-
-            if (typeof value !== "string")
-                return new Error("Validation failed: expected type to be a string");
-
-            if (value == "form")
-                return new Error("Validation warning: type should not be \"form\"");
-        }
-    }
-
-    static defaultProps = {
-        type: "div"
-    }
-
     get fields() {
         return reduceRefs(this.refs);
     }
@@ -101,5 +85,21 @@ class FieldWrapper extends React.Component {
     }
 
 }
+
+FieldWrapper.propTypes = {
+    type: (props, propName, componentName) => {
+        const value = props[propName];
+
+        if (typeof value !== "string")
+            return new Error("Validation failed: expected type to be a string");
+
+        if (value == "form")
+            return new Error("Validation warning: type should not be \"form\"");
+    }
+};
+
+FieldWrapper.defaultProps = {
+    type: "div"
+};
 
 module.exports = FieldWrapper;
