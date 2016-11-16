@@ -1,13 +1,10 @@
 "use strict";
 
 const React = require('react');
-const clone = require("lodash/clone");
-
 const transformChildren = require("./lib/transform-children");
 const reduceRefs = require("./lib/reduce-refs");
 
 const Wrapper = require("./field-wrapper");
-
 
 class Form extends Wrapper {
 
@@ -56,7 +53,7 @@ class Form extends Wrapper {
     }
 
     render() {
-        var props = clone(this.props);
+        var props = Object.assign({}, this.props);
 
         delete (props.defaultValues);
 

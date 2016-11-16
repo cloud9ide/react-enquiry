@@ -30,9 +30,6 @@
     "url": "https://github.com/cloud9ide/react-enquiry/issues"
   },
   "homepage": "https://github.com/cloud9ide/react-enquiry#readme",
-  "dependencies": {
-    "lodash": "^4.6.1"
-  },
   "devDependencies": {
     "async": "^2.1.2",
     "babel": "^6.5.2",
@@ -47,7 +44,7 @@
     "enzyme": "^2.4.1",
     "esformatter": "^0.9.6",
     "js-beautify": "^1.6.4",
-    "lodash": "^4.16.4",
+    "lodash": "^4.17.2",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",

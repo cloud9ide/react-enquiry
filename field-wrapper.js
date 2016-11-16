@@ -4,7 +4,6 @@ const React = require('react');
 
 const transformChildren = require("./lib/transform-children");
 const reduceRefs = require("./lib/reduce-refs");
-const clone = require("lodash/clone");
 
 class FieldWrapper extends React.Component {
     get fields() {
@@ -73,7 +72,7 @@ class FieldWrapper extends React.Component {
     }
 
     render() {
-        var props = clone(this.props);
+        var props = Object.assign({}, this.props);
 
         delete (props.defaultValues);
         delete (props.type);
