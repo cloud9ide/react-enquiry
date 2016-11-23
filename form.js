@@ -3,6 +3,8 @@
 const React = require('react');
 const transformChildren = require("./lib/transform-children");
 const reduceRefs = require("./lib/reduce-refs");
+const clone = require("./lib/util/clone");
+const omit = require("./lib/util/omit");
 
 const Wrapper = require("./field-wrapper");
 
@@ -53,9 +55,7 @@ class Form extends Wrapper {
     }
 
     render() {
-        var props = Object.assign({}, this.props);
-
-        delete (props.defaultValues);
+        let props = omit(this.props, "defaultValues");
 
         props.onSubmit = this.onSubmit;
         props.noValidate = true;

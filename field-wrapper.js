@@ -4,6 +4,7 @@ const React = require('react');
 
 const transformChildren = require("./lib/transform-children");
 const reduceRefs = require("./lib/reduce-refs");
+const omit = require("./lib/util/omit");
 
 class FieldWrapper extends React.Component {
     get fields() {
@@ -19,10 +20,10 @@ class FieldWrapper extends React.Component {
 
             if (Array.isArray(field)) {
                 value = field.reduce(function(values, field) {
-                    if (field.isRadio() && field.isChecked())
+                    if (field.isRadio && field.isChecked)
                         return field.getValue();
 
-                    if (field.isChecbox() && field.isChecked())
+                    if (field.isCheckbox && field.isChecked)
                         values.push(field.getValue());
 
                     return values;
@@ -72,10 +73,7 @@ class FieldWrapper extends React.Component {
     }
 
     render() {
-        var props = Object.assign({}, this.props);
-
-        delete (props.defaultValues);
-        delete (props.type);
+        let props = omit(this.props, "defaultValues", "type");
 
         props.onSubmit = this.onSubmit;
         props.noValidate = true;
