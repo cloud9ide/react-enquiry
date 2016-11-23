@@ -2,11 +2,7 @@
 
 const Wrapper = require("./field-wrapper");
 
-class Fieldset extends Wrapper {
-    static defaultProps = {
-        type: "fieldset"
-    }
-}
+class Fieldset extends Wrapper {}
 
 Fieldset.defaultProps = {
     type: "fieldset"
