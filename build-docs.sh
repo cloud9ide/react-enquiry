@@ -6,7 +6,7 @@ GIT_COMMIT=`git log -1 --pretty="format:%h %ai %s"`
 echo "Generating new website for ${GIT_BRANCH} ${GIT_COMMIT}"
 npm install
 npm run build
-git clone . site-gen
+git clone . ../site-gen
 cd site-gen
 git checkout gh-pages
 cp ../docsite/build/* . -r
