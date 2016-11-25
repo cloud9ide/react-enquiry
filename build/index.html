@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta/>
+    <link href="./css/profile.css" rel="stylesheet" />
+    <link href="./css/index.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css" rel="stylesheet" />
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <div id="doc-wrapper">
+            <div id="doc-sidebar">
+                <nav id="doc-nav" class="pills padding-top-6 margin-2"><a href="#example-basic">Basic usage</a><a href="#example-validation">Form validation</a><a href="#example-advanced_validation">Advanced form valiation</a><a href="#example-errors">Displaying errors</a><a href="#example-responding">Responding to change</a>
+                    <a
+                        href="#example-radiobuttons">Radio buttons</a><a href="#example-checkbuttons">Check buttons</a><a href="#example-select">Select inputs</a><a href="#example-tentatively">Tentatively valid forms</a><a href="#example-nested">Nested components in forms</a></nav>
+            </div>
+            <div id="doc-contents" class="padding-4">
+                <div id="example-basic">
+                    <h1>Basic usage</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <p>This example shows the most basic form.</p>
+                                <p>Enquiry captures submit events and reads data from the form.</p>
+                                <form type="div" novalidate=""><label>Enter some text and press submit</label><input type="text" name="test" value="" /><br/><button class="solid fat important" type="submit">Submit</button></form>
+                            </div>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+                <div id="example-validation">
+                    <h1>Form validation</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <p>Form validation is done by supplying a <em>validation</em> function as an attribut to your inputs. A validation funciton takes two arguments: <code>(value, values)</code>.</p>
+                                <p>Reform captures submit events and reads data and validates the form.</p>
+                                <form type="div" novalidate=""><label>Please enter a valid username (a-z and 0-9)</label><input type="text" name="test" value="" /><br/><button class="solid fat important" type="submit">Submit</button></form>
+                            </div>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+                <div id="example-advanced_validation">
+                    <h1>Advanced form valiation</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <p>Form validation is done by supplying a <em>validation</em> function as an attribut to your inputs. A validation function takes two arguments: <code>(value, values)</code>. Value contains the current value, values contains
+                                    all values in the form as a javascript object.</p>
+                                <p>The <code>validation</code> attribute can be either a function or an array of functions, where each validation is only executed if the previous validation was successful.</p>
+                                <p>Reform captures submit events and reads data and validates the form.</p>
+                                <form type="div" novalidate=""><label>Please enter a valid username (a-z and 0-9)</label><input type="text" name="test" value="" /><label>Please pick a password</label><input type="password" name="password" value="" /><label>Type your password again to confirm</label><input
+                                        type="password" name="password_confirm" value="" /><br/><button class="solid fat important" type="submit">Submit</button></form>
+                            </div>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+                <div id="example-errors">
+                    <h1>Displaying errors</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <p>Enquiry does not handle display logic. Instead, capture validation errors inside your component state and render where appropriate.<br/><em>Note how validation is chained for super-re-useability</em></p>
+                                <form type="div"
+                                    novalidate=""><label>Please enter a number between 1 and 20</label><input type="text" name="test" value="" /><br/><button class="solid fat important" type="submit">Submit</button></form>
+                            </div>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+                <div id="example-responding">
+                    <h1>Responding to change</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <p>You can set an `onChange` on your input, just like you would do in a &quot;plain old form&quot;. Enquiry stil keeps track of your values and validations.</p>
+                                <p><em>Type something to move the progress-bar. Hit submit to trigger validation</em></p>
+                                <form type="div" novalidate=""><label>The password strength-meter</label><input type="password" name="test" placeholder="Try me!" value="" />
+                                    <div style="background-color:#eee;border-radius:5px;">
+                                        <div style="width:0%;height:15px;border-radius:5px;background-color:red;"></div>
+                                    </div><br/><button class="solid fat important" type="submit">Submit</button></form>
+                            </div>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+                <div id="example-radiobuttons">
+                    <h1>Radio buttons</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <p>Use the normal <code>input[type=&quot;radio&quot;]</code> to create radio buttons.</p>
+                                <form type="div" novalidate="">
+                                    <h4>Choose your topping:</h4><label><input type="radio" name="topping"/> Pizza Funghi</label><label><input type="radio" name="topping"/> Pizza Vegetariana</label><label><input type="radio" name="topping"/> Pizza Salame</label>
+                                    <button
+                                        class="solid fat important" type="submit">Submit</button>
+                                </form>
+                            </div>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+                <div id="example-checkbuttons">
+                    <h1>Check buttons</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <p>Use the normal <code>input[type=&quot;checkbox&quot;]</code> to create checkboxes.</p>
+                                <p>Enquiry will create an array of values for each checked item</p>
+                                <form type="div" novalidate="">
+                                    <h4>How do you like your tea?</h4><label><input type="checkbox" name="tea"/> Milk please</label><label><input type="checkbox" name="tea"/> Sugar</label><label><input type="checkbox" name="tea"/> And a biscuit</label>
+                                    <button
+                                        class="solid fat important" type="submit">Submit</button>
+                                </form>
+                            </div>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+                <div id="example-select">
+                    <h1>Select inputs</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <p>Form validation is done by supplying a <em>validation</em> function as an attribut to your inputs. A validation funciton takes two arguments: <code>(value, values)</code>.</p>
+                                <p>Reform captures submit events and reads data and validates the form.</p>
+                                <form type="div" novalidate=""><label>You can validate and use selects like any other input element:</label><select name="beverage"><option selected="" value="" disabled="">Pick one</option><option value="water">Water</option><option value="sodapop">Soda Pop</option><option value="milk">Milk</option></select><br/><br/>
+                                    <button
+                                        class="solid fat important" type="submit">Submit</button>
+                                </form>
+                            </div>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+                <div id="example-tentatively">
+                    <h1>Tentatively valid forms</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <p>Sometimes you want to know if the form could be valid without actually validating the form. You can make a ref to your form and call <code>isTentativelyValid</code>. This will return an object with <code>true</code> or
+                                    <code>false</code>for each form element.</p>
+                                <form type="div" novalidate=""><label>You can only submit the form if you agree</label><input name="name" placeholder="Your name" value="" /><label><input type="checkbox" name="agree"/>I agree to the bla bla</label><br/><button disabled="" class="solid fat important"
+                                        type="submit">Submit</button></form>
+                            </div>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+                <div id="example-nested">
+                    <h1>Nested components in forms</h1>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div>
+                                <p>You can create sub-form components using the <code>Fieldset</code>or <code>FieldWrapper</code> components.</p><pre>const Fieldset = require(&quot;enquiry/fieldset&quot;);<br/>const FieldWrapper = require(&quot;enquiry/field-wrapper&quot;);</pre>
+                                <h3>N.B.</h3>
+                                <p>Enquiry needs to be able to reach the children of each child-component. You <strong>must</strong> define a ref attribute on your Fieldset or FieldWrapper for this to work.</p>
+                                <h3>N.B.</h3>
+                                <p>Functional components don&#x27;t support refs yet. You need to create a manage component (using <code>class</code> or <code>React.createClass</code>)</p>
+                                <form type="div" novalidate="">
+                                    <h4>What would you like to drink?</h4><label><input type="radio" name="beverage"/> Tea</label><label><input type="radio" name="beverage"/> Coffee</label><button class="solid fat important" type="submit">Submit</button></form>
+                            </div>
+                            <div class="flex-center-right margin-vertical-2"><button class="float-right noborder">{...} Toggle source</button></div>
+                        </div>
+                        <div class="col-md-8 col-lg-10"></div>
+                    </div>
+                    <hr class="margin-vertical-4" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
