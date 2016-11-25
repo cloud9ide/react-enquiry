@@ -37,12 +37,6 @@ module.exports = function SimpleForm() {
                     <option value="sodapop">Soda Pop</option>
                     <option value="milk">Milk</option>
                 </select>
-                <label>When you specify "multiple" values turn into an array</label>
-                <select name="food" value="" validation={isRequired} multiple>
-                    <option value="cake">Cake</option>
-                    <option value="fries">Fries</option>
-                    <option value="broccoli">Broccoli</option>
-                </select>
                 <br/>
                 <br/>
                 <button className="solid fat important" type="submit">Submit</button>

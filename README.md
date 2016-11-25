@@ -3,6 +3,8 @@
 Enquiry a the form validation framework for React you can already use if you
 know how HTML and forms work. Simply wrap your `<input />` element in an `enquiry/form` and you're ready go.
 
+Check the [documentation site](http://cloud9ide.github.io/react-enquiry/) for examples and documentation!
+
 ### Architecture
 
 Enquiry recursively wraps your form components in an [higher-order-component](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.63i93014a) that
