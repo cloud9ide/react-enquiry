@@ -28,7 +28,7 @@ Examples from the documentation site can be found [here](https://github.com/clou
 Geting all the values from your form is as un-exiting as simply replacing the 
 `<form>` tag with `enquiry/from`:
 
-```
+```javascript
 const Form = require("enquiry/form");
 const React = require("react");
 
@@ -41,7 +41,7 @@ function onSubmitRegisterForm(errors, values) {
 
 function RegisterFrom() {
     return (
-        <Form onSubmit={onSubmitNameForm}>
+        <Form onSubmit={onSubmitRegisterForm}>
             <label>Your name: </label>
             <input name="name" />
             <label>Choose a password: </label>
@@ -66,7 +66,8 @@ and the values of all other fields as a key => value object.
 For more advanced examples plese refer to the [documentation site](http://cloud9ide.github.io/react-enquiry/)
 
 Example:
-```
+
+```javascript
 const Form = require("enquiry/form");
 const React = require("react");
 
