@@ -1,15 +1,14 @@
 # React Enquiry
 
-Enquiry is a form validation framework for React that does not interfer with the
-way you want to structure your markup or render your components. 
+Enquiry a the form validation framework for React you can already use if you
+know how HTML and forms work. Simply wrap your `<input />` element in an `enquiry/form` and you're ready go.
 
-Enquiry recursively wraps your form components in an higher-order-component that
-captures validation properties and change listeners. These HOC components are then
-registered with the containing form component to easily retrieve validation results
-and values on a single `onSubmit` handler.
+### Architecture
 
-Enquiry makes it easy to create re-usable form sections using refs to attach child
-wrappers to form wrappers in a transparent fashon.
+Enquiry recursively wraps your form components in an [higher-order-component](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.63i93014a) that
+captures validation properties and change listeners. These HOC components are then registered with the containing form component to easily retrieve validation results and values on a single `onSubmit` handler.
+
+Enquiry makes it easy to create re-usable form sub-sections by attaching child-wrappers using refs.
 
 ### Installation
 
