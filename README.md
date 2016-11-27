@@ -73,7 +73,7 @@ Example:
 const Form = require("enquiry/form");
 const React = require("react");
 
-funtion isRequired(value) {
+function isRequired(value) {
     if (!value) return "This is a required field";
 }
 
