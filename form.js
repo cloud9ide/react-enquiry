@@ -43,19 +43,21 @@ class Form extends Wrapper {
     }
 
     onSubmit(evt) {
-        evt.preventDefault();
-        this.submit();
+        if (!this.props.preventDefault)
+            evt.preventDefault();
+
+        this.submit(evt);
     }
 
-    submit() {
+    submit(evt) {
         this.validate(function(errors, values) {
             if (!this.props.onSubmit) return;
-            this.props.onSubmit(errors, values, this);
+            this.props.onSubmit(errors, values, this, evt);
         }.bind(this));
     }
 
     render() {
-        let props = omit(this.props, "defaultValues");
+        let props = omit(this.props, "defaultValues", "preventDefault");
 
         props.onSubmit = this.onSubmit;
         props.noValidate = true;
