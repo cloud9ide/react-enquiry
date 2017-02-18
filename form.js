@@ -27,6 +27,9 @@ class Form extends Wrapper {
         var fields = reduceRefs(this.refs);
 
         Object.keys(fields).forEach(function(key) {
+            if (typeof values[key] == 'undefined')
+                return;
+
             var field = fields[key];
 
             if (Array.isArray(field)) {
