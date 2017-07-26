@@ -1,6 +1,7 @@
 "use strict";
 
 const React = require('react');
+const PropTypes = require('prop-types');
 const transformChildren = require("./lib/transform-children");
 const reduceRefs = require("./lib/reduce-refs");
 const clone = require("./lib/util/clone");
@@ -67,9 +68,9 @@ class Form extends Wrapper {
 }
 
 Form.propTypes = {
-    onSubmit: React.PropTypes.func,
-    values: React.PropTypes.object,
-    initialValues: React.PropTypes.object,
+    onSubmit: PropTypes.func,
+    values: PropTypes.object,
+    initialValues: PropTypes.object,
 };
 
 module.exports = Form;
