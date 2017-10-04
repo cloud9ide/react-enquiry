@@ -13,52 +13,52 @@ var sources = [
     {
         title: "Basic usage",
         name: "basic",
-        source: "/example/Basic.jsx"
+        source: "/example/Basic.js"
     },
     {
         title: "Form validation",
         name: "validation",
-        source: "/example/Validation.jsx"
+        source: "/example/Validation.js"
     },
     {
         title: "Advanced form valiation",
         name: "advanced_validation",
-        source: "/example/ValidationAdvanced.jsx"
+        source: "/example/ValidationAdvanced.js"
     },
     {
         title: "Displaying errors",
         name: "errors",
-        source: "/example/Errors.jsx"
+        source: "/example/Errors.js"
     },
     {
         title: "Responding to change",
         name: "responding",
-        source: "/example/Responding.jsx"
+        source: "/example/Responding.js"
     },
     {
         title: "Radio buttons",
         name: "radiobuttons",
-        source: "/example/RadioButtons.jsx"
+        source: "/example/RadioButtons.js"
     },
     {
         title: "Check buttons",
         name: "checkbuttons",
-        source: "/example/CheckButtons.jsx"
+        source: "/example/CheckButtons.js"
     },
     {
         title: "Select inputs",
         name: "select",
-        source: "/example/Select.jsx"
+        source: "/example/Select.js"
     },
     {
         title: "Tentatively valid forms",
         name: "tentatively",
-        source: "/example/Tentatively.jsx"
+        source: "/example/Tentatively.js"
     },
     {
         title: "Nested components in forms",
         name: "nested",
-        source: "/example/Nested.jsx"
+        source: "/example/Nested.js"
     }
 ];
 
