@@ -5,12 +5,12 @@ var React = require('react');
 var sources = require("../example-sources");
 var examples = require("../examples");
 
-var Dockblock = require("./Dockblock.jsx");
+var Dockblock = require("./Dockblock");
 
-var Page = React.createClass({
-    className: "Page",
+class Page extends React.Component {
+    className = "Page";
 
-    renderNav: function() {
+    renderNav = () => {
         return Object.keys(examples).map(function(name) {
             var src = sources[name];
 
@@ -18,9 +18,9 @@ var Page = React.createClass({
                 <a href={"#example-" + name} key={"nav-" + name}>{src.title}</a>
                 );
         });
-    },
+    };
 
-    renderDocs: function() {
+    renderDocs = () => {
         return Object.keys(examples).map(function(name) {
             var Example = examples[name];
             var src = sources[name];
@@ -31,9 +31,9 @@ var Page = React.createClass({
                 </Dockblock>
                 );
         });
-    },
+    };
 
-    render: function() {
+    render() {
         return (
             <div id="doc-wrapper">
                 <div id="doc-sidebar">
@@ -47,6 +47,6 @@ var Page = React.createClass({
             </div>
             );
     }
-});
+}
 
 module.exports = Page;

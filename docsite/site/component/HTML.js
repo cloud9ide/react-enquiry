@@ -1,9 +1,9 @@
 "use strict";
 var React = require('react');
-var Page = require("./Page.jsx");
+var Page = require("./Page");
 
-var HTML = React.createClass({
-    render: function() {
+class HTML extends React.Component {
+    render() {
         return (
             <html>
                 <head>
@@ -22,6 +22,6 @@ var HTML = React.createClass({
             </html>
             );
     }
-});
+}
 
 module.exports = HTML;

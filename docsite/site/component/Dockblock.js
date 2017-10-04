@@ -3,21 +3,18 @@
 var React = require('react');
 var Highlight = require('react-highlight');
 
-var Dockblock = React.createClass({
+class Dockblock extends React.Component {
+    state = {};
 
-    getInitialState: function() {
-        return {};
-    },
-
-    toggleSource: function(evt) {
+    toggleSource = (evt) => {
         evt.preventDefault();
 
         this.setState({
             source: !this.state.source
         });
-    },
+    };
 
-    renderSource: function() {
+    renderSource = () => {
         if (!this.state.source)
             return;
 
@@ -26,9 +23,9 @@ var Dockblock = React.createClass({
                 {this.props.source}
             </Highlight>
             );
-    },
+    };
 
-    render: function() {
+    render() {
         return (
             <div id={"example-" + this.props.name}>
                 <h1>{this.props.title}</h1>
@@ -50,7 +47,7 @@ var Dockblock = React.createClass({
             </div>
             );
     }
-});
+}
 
 
 module.exports = Dockblock;

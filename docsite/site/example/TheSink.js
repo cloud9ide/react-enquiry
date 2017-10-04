@@ -5,28 +5,27 @@ var Fieldset = require("enquiry/fieldset");
 var Validate = require("./lib/validate");
 var _ = require("lodash");
 
-var Input = React.createClass({
-
-    generateId: function() {
+class Input extends React.Component {
+    generateId = () => {
         return "id-" + this.props.name;
-    },
+    };
 
-    renderLabel: function() {
+    renderLabel = () => {
         if (this.props.label)
             return <label htmlFor={this.generateId()}>{this.props.label}</label>;
-    },
+    };
 
-    getError: function() {
+    getError = () => {
         if (this.props.errors)
             return this.props.errors[this.props.name];
-    },
+    };
 
-    renderFormError: function() {
+    renderFormError = () => {
         if (this.getError())
             return <small className="text-color-danger">{this.getError()}</small>;
-    },
+    };
 
-    validationFactory: function() {
+    validationFactory = () => {
         var validation = [];
 
         if (this.props.required)
@@ -36,9 +35,9 @@ var Input = React.createClass({
             validation.push(Validate.validateEmail);
 
         return validation;
-    },
+    };
 
-    render: function() {
+    render() {
         /**
          * Omit invalid html attributes and the required flag...
          */
@@ -52,10 +51,10 @@ var Input = React.createClass({
             </Fieldset>
             );
     }
-});
+}
 
-var Deep = React.createClass({
-    render: function() {
+class Deep extends React.Component {
+    render() {
         return (
             <Fieldset ref="reform" type="fieldset">
                 <p>I am a deeply nested component</p>
@@ -64,12 +63,12 @@ var Deep = React.createClass({
             </Fieldset>
             );
     }
-});
+}
 
-var Prefs = React.createClass({
-    foo: function() {},
+class Prefs extends React.Component {
+    foo = () => {};
 
-    render: function() {
+    render() {
         return (
             <Fieldset ref="reform" type="fieldset">
                 <label>
@@ -85,10 +84,10 @@ var Prefs = React.createClass({
             </Fieldset>
             );
     }
-});
+}
 
-var Things = React.createClass({
-    render: function() {
+class Things extends React.Component {
+    render() {
         return (
             <Fieldset ref="hookup" type="fieldset">
                 <select name="picone">
@@ -101,34 +100,30 @@ var Things = React.createClass({
             </Fieldset>
             );
     }
-});
+}
 
+class TheSink extends React.Component {
+    state = {
+        foo: "foo",
+        what: "this",
+        thing: [2, 3],
+        picone: "c"
+    };
 
-var TheSink = React.createClass({
-
-    getInitialState: function() {
-        return {
-            foo: "foo",
-            what: "this",
-            thing: [2, 3],
-            picone: "c"
-        };
-    },
-
-    onSubmit: function(errors, values, form) {
+    onSubmit = (errors, values, form) => {
         this.setState({
             style: {
                 backgroundColor: "green"
             },
             errorr: errors
         });
-    },
+    };
 
-    onChange: function() {
+    onChange = () => {
         console.log(this.refs.fooform.isTentativelyValid);
-    },
+    };
 
-    render: function() {
+    render() {
         return (
             <div>
                 <Reform style={this.state.style} ref="fooform" defaultValues={this.state} onSubmit={this.onSubmit}>
@@ -150,7 +145,7 @@ var TheSink = React.createClass({
             </div>
             );
     }
-});
+}
 
 module.exports = TheSink;
 

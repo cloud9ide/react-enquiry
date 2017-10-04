@@ -4,8 +4,8 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactDOMServer = require("react-dom/server");
 
-var HTML = require("./component/HTML.jsx");
-var Page = require("./component/Page.jsx");
+var HTML = require("./component/HTML");
+var Page = require("./component/Page");
 var formatHtml = require('js-beautify').html;
 
 
